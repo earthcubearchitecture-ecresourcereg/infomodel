@@ -1,0 +1,103 @@
+{
+	"@context": {
+		"@vocab": "http://schema.org/",
+		"datacite": "http://purl.org/spar/datacite/",
+		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
+		"geolink": "http://schema.geolink.org/1.0/base/main#",
+		"vivo": "http://vivoweb.org/ontology/core#",
+		"dcat": "http://www.w3.org/ns/dcat#"
+	},
+	"@id": "urn:cinergiinventory639",
+	"@type": [
+		"CreativeWork",
+		"Product",
+		"Texs"
+	],
+	"additionalType": [
+		"ecrro:InterchangeFormat"
+	],
+	"description": "MiniSEED is the subset of the SEED standard that is used for time series data. Very limited metadata for the time series is included in miniSEED beyond time series identification and simple state-of-health flags. In particular, geographic coordinates, response/scaling information and other information needed to interpret the data values are not included.  Time series are stored as generally independent, fixed length data records which each contain a small segment of contiguous series values. A reader of miniSEED is required to reconstruct longer, contiguous time series from the data record segments. Common record lengths are 512-byte (for real time streams) and 4096-byte (for archiving), other record lengths are used for special scenarios.  A 'file' or 'stream' of miniSEED is simply a concatenation of data records. Depending on the capabilities of the intended reader the data records for multiple channels of data may be multiplexed together.",
+	"name": "MiniSEED",
+	"creator": "not specified",
+	"datePublished": "not specified",
+	"keywords": [
+		"seismogram",
+		"time series",
+		"XML"
+	],
+	"funder": "National Science Foundation",
+	"license": "not specified",
+	"isRelatedTo": [
+		{
+			"@type": "Product",
+			"name": "libmseed software library to support reading and writing miniSEED data",
+			"url": "https://seiscode.iris.washington.edu/projects/libmseed"
+		}
+	],
+	"additionalProperty": [
+		{
+			"name": "dcat:qualifiedRelation",
+			"value": {
+				"@Type": "dcat:Relationship",
+				"dct:relation": "(URI for resource required by described resource)",
+				"dcat:hadRole": "(URI for dependency type)"
+			}
+		},
+		{
+			"name": "dct:conformsTo",
+			"value": {
+				"@Type": "eccro:Specification",
+				"name": "MiniSEED specification"
+			}
+		},
+	{
+			"name": "ecrro:RegistryContributor",
+			"value": {
+				"@type": "ContactPoint",
+				"name": "Stephen M. Richard",
+				"identifier": "https://orcid.org/0000-0001-6041-5302"
+			}
+		},
+		{
+			"name": "ecrro:timeToLive",
+			"value": "indefinite > 5 yr"
+		},
+		{
+			"name": "ecrro:usage",
+			"value": "Widely used by geoscientists, > 5 yr."
+		},
+		{
+			"name": "ecrro:status",
+			"value": "Used in multiple places"
+		},
+		{
+		'name": "dcat:qualifiedRelation",
+		"value": {
+				"@Type": "dcat:Relationship",
+				"dct:relation":"(URI primary publication)",
+				"dcat:hadRole":"ecrro:primaryPublication"
+			}
+		}
+	],
+	"citation": "in information model, this should be link to normative publication, but sdo semantics define this as related resource, with no Role defined",
+	"about": "seismology",
+	"identifier": "not specified",
+	"documentation": "primary publication, missing",
+	"provider": {
+		"@Type": "Organization",
+		"name": "International Federation of Digital Seismograph Networks (FDSN)"
+	},
+	"url": "http://www.iris.washington.edu/ds/nodes/dmc/data/formats/miniseed/",
+	"sourceOrganization": {
+		"@Type": "Organization",
+		"name": "originating project name",
+		"description": "originatingProject description"
+	},
+	"audience": {
+		"@Type": "Audience",
+		"description": "seismologists, seismic data facilities, technologists"
+	},
+	"encodingFormat": "application/XML",
+	"isBasedOn": "Information Model, not specified, is there a conceptual model underlying SEED",
+	"inLanguage": "en"
+}

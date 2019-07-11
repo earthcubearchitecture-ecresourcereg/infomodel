@@ -1,0 +1,71 @@
+{
+	"@context": {
+		"@vocab": "http://schema.org/",
+		"datacite": "http://purl.org/spar/datacite/",
+		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
+		"geolink": "http://schema.geolink.org/1.0/base/main#",
+		"vivo": "http://vivoweb.org/ontology/core#",
+		"dcat": "http://www.w3.org/ns/dcat#"
+	},
+	"@id": "ID for this metadata record",
+	"@type": [
+		"CreativeWork",
+		"Product"
+	],
+	"additionalType": [
+		"ecrro:****type*****"
+	],
+	"description": "Put description of the resource here, and remove this note. The JSON format does not allow multiple keys for additional property, so all eccr properties that we've had to add in the model are grouped in an array of additional property intances",
+	"name": {},
+	"creator": {},
+	"datePublished": {},
+	"keywords": {},
+	"dependencies?": {},
+	"funder": {},
+	"license": {},
+	"isRelatedTo": {},
+	"citation": {},
+	"isRelatedTo": {
+	   "@type": "Product",
+	   "name": "",
+	   "url": ""
+	},
+	"about": {},
+	"identifier": {},
+	"status": "",
+	"documentation?": {},
+	"additionalProperty": {
+		"PropertyValue": {
+			"name": "ecrro:RegistryContributor",
+			"value": {
+				"@type": "ContactPoint",
+				"name": "",
+				"identifier": ""
+			}
+		}
+	},
+	"provider": {
+		"@Type": "Organization",
+		"name": ""
+	},
+	"additionalProperty": {
+		"PropertyValue": {
+			"name": "ecrro:timeToLive",
+			"value": ""
+		}
+	},
+	"url": "",
+	"additionalProperty":
+		{"PropertyValue": 
+			{"name":"ecrro:usage", 
+			"value": "Free text"}
+		}
+	"sourceOrganization": {
+		"@Type":"Organization",
+		"description":"originatingProject description"
+	},
+	"audience": {
+		"@Type":"Audience",
+		"description": "describe audience in text"
+	},
+}

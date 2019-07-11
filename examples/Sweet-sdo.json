@@ -1,0 +1,98 @@
+{
+    "@context": {
+        "@vocab": "http://schema.org/",
+        "datacite": "http://purl.org/spar/datacite/",
+        "earthcollab": "https://library.ucar.edu/earthcollab/schema#",
+        "geolink": "http://schema.geolink.org/1.0/base/main#",
+        "vivo": "http://vivoweb.org/ontology/core#",
+        "dcat": "http://www.w3.org/ns/dcat#"
+    },
+    "@id": "urn:cinergiinventory639",
+    "@type": [
+        "Dataset",
+        "SoftwareSourceCode",
+        "Product"
+    ],
+    "additionalType": [
+        "geolink:Dataset",
+        "vivo:Dataset"
+    ],
+    "name": "Semantic Web for Earth and Environmental Terminology (SWEET)",
+    "description": "Mid-level ontology for Earth and Environmental Science. SWEET ontologies are written in the OWL ontology language and are publicly available. SWEET 2.3 is highly modular with 6000 concepts in 200 separate ontologies. You can view the entire concept space from an OWL tool such as Protege by reading in sweetAll.owl. Alternatively, these ontologies can be viewed individually. SWEET 2.3 consists of nine top-level concepts/ontologies. Some of the next-level concepts are shown in the Figure. SWEET is a middle-level ontology; most users add a domain-specific ontology using the components defined here to satisfy end user needs (Source: NASA JPL). The original version was developed by Robert Raskin at JPL (see Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020 ). Stewardship has been taken over by the Earth Science Information Partners Federation (ESIPFed), managed through a GitHub repository at https://github.com/ESIPFed/sweet.  See https://github.com/ESIPFed/sweet/blob/master/CONTRIBUTING.md for information about providing comments or contributing to development of SWEET.",
+    "license": "Apache License 2.0",
+    "citation": [
+        "(2015-04-30), Semantic Web for Earth and Environmental Terminology (SWEET), urn:cinergiinventory639.",
+        "Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020"
+    ],
+    "about": "Earth Science",
+    "identifier": "http://sweetontology.net/sweetAll",
+    "status": "Used in multiple places",
+    "documentation": "Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020",
+    "additionalProperty": [
+        {
+            "@type": "PropertyValue",
+            "propertyID": "registryContributor",
+            "value": {
+                "@type": "ContactPoint",
+                "name": "Stephen M. Richard",
+                "email": "datadiscoverycurator@datadiscoverystudio.org"
+            }
+        },
+        {
+            "@type": "PropertyValue",
+            "propertyID": "representationFormat",
+            "value": {
+                "@type": "StructuredValue",
+                "name": "owl version 3.2.0; application/x-turtle",
+                "identifier": "http://earthcube.org/resources/35736487"
+            }
+        }
+    ],
+    "creator": [
+        {
+            "@type": "Person",
+            "givenName": "Robert",
+            "familyName": "Raskin",
+            "worksFor": "Jet Propulsion Lab, NASA",
+            "deathDate": "2012-03-02"
+        }
+    ],
+    "datePublished": "2015-04-30",
+    "encodingFormat": "application/x-turtle",
+    "codeRepository": "https://github.com/ESIPFed/sweet",
+    "programmingLanguage": "owl version 3.2.0",
+    "distribution": [
+        {
+            "@type": "DataDownload",
+            "url": "https://github.com/ESIPFed/sweet/tree/master/src",
+            "name": "Repository URL",
+            "description": "Link Function: GitHub repository. SWEET is implemented as a collection of linked RDF files using Turtle syntax"
+        }
+    ],
+    "includedInDataCatalog": [
+        {
+            "@type": "DataCatalog",
+            "name": "Data Discovery Studio",
+            "url": "http://datadiscoverystudio.org/geoportal/rest/metadata/item/f2ab4d7cffe1455cb6ab901137a3dc4a/html"
+        },
+        {
+            "@type": "DataCatalog",
+            "name": "EarthCube Resource Registry",
+            "url": "http://earthcube.org/resources/f2ab4d7cffe1455cb6ab901137a3dc4a/html"
+        }
+    ],
+    "keywords": [
+        "vocabulary",
+        "information exchange",
+        "Earth Science",
+        "NASA"
+    ],
+    "publisher": {
+        "@type": "Organization",
+        "name": "Earth Science Information Partners Federation (ESIPFed)"
+    },
+    "spatialCoverage": {
+        "@type": "Place",
+        "description": "Earth"
+    }
+}
