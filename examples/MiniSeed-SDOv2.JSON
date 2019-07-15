@@ -5,7 +5,8 @@
 		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
 		"geolink": "http://schema.geolink.org/1.0/base/main#",
 		"vivo": "http://vivoweb.org/ontology/core#",
-		"dcat": "http://www.w3.org/ns/dcat#"
+		"dcat": "http://www.w3.org/ns/dcat#",
+		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_"
 	},
 	"@id": "urn:cinergiinventory639",
 	"@type": [
@@ -34,71 +35,31 @@
 			"url": "https://seiscode.iris.washington.edu/projects/libmseed"
 		}
 	],
-	"additionalProperty": [
+	"dcat:qualifiedRelation": [
 		{
-			"@type": "PropertyValue",
-			"propertyID": "dcat:qualifiedRelation",
-			"name": "dependency",
-			"value": {
-				"@type": "dcat:Relationship",
-				"dct:relation": "(URI for resource required by described resource)",
-				"dcat:hadRole": "(URI for dependency type)"
-			}
+			"@type": "dcat:Relationship",
+			"dct:relation": "(URI for resource required by described resource)",
+			"dcat:hadRole": "(URI for dependency type)"
 		},
 		{
-			"@type": "PropertyValue",
-			"propertyID": "dct:conformsTo",
-			"value": {
-				"@type": "eccro:Specification",
-				"name": "MiniSEED specification"
-			}
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ecrro:RegistryContributor",
-			"value": {
-				"@type": "ContactPoint",
-				"name": "Stephen M. Richard",
-				"identifier": "https://orcid.org/0000-0001-6041-5302"
-			}
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ecrro:timeToLive",
-			"value": "indefinite > 5 yr"
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ecrro:usage",
-			"name": "maturity/usage",
-			"value": "Widely used by geoscientists, > 5 yr."
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ecrro:status",
-			"value": "Used in multiple places"
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "dcat:qualifiedRelation",
-			"value": {
-				"@type": "dcat:Relationship",
-				"dct:relation": "(URI primary publication)",
-				"dcat:hadRole": "ecrro:primaryPublication"
-			}
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "dcat:qualifiedRelation",
-			"name": "primary publication",
-			"value": {
-				"@type": "dcat:Relationship",
-				"dct:relation": "http://www.iris.washington.edu/ds/nodes/dmc/data/formats/miniseed/",
-				"dcat:hadRole": "ecrro:primaryPublication"
-			}
+			"@type": "dcat:Relationship",
+			"dct:relation": "(URI primary publication)",
+			"dcat:hadRole": "ecrro:primaryPublication"
 		}
 	],
-	"citation": "in information model, this should be link to normative publication, but sdo semantics define this as related resource, with no Role defined",
+	"dct:conformsTo": {
+		"@type": "eccro:Specification",
+		"name": "MiniSEED specification"
+	},
+	"ecrro:RegistryContributor": {
+		"@type": "ContactPoint",
+		"name": "Stephen M. Richard",
+		"identifier": "https://orcid.org/0000-0001-6041-5302"
+	},
+	"ecrro:timeToLive": "indefinite > 5 yr",
+	"ecrro:usage": "Widely used by geoscientists, > 5 yr.",
+	"ecrro:status": "Used in multiple places",
+	"eccro:citation": "recommended citation for MiniSEED",
 	"about": "seismology",
 	"identifier": "not specified",
 	"provider": {

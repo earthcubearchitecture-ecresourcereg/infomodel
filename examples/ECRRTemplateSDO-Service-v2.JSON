@@ -1,0 +1,146 @@
+{
+	"@context": {
+		"@vocab": "http://schema.org/",
+		"datacite": "http://purl.org/spar/datacite/",
+		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
+		"geolink": "http://schema.geolink.org/1.0/base/main#",
+		"vivo": "http://vivoweb.org/ontology/core#",
+		"dcat": "http://www.w3.org/ns/dcat#",
+		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_"
+	},
+	"@id": "ID for this metadata record",
+	"@type": [
+		"CreativeWork",
+		"Product",
+		"WebAPI"
+	],
+	"additionalType": [
+		"ecrro:0000202 (EC Data Service) or dc:Service if not a data service, e.g. a processing service"
+	],
+	"name": "text that identifies the service instance",
+	"description": "Put description of the resource here, and remove this note. The google structured data tester throws errors on repeated keys",
+	"creator": {
+		"@type": "[Organization or Person]",
+		"name": "Text"
+	},
+	"datePublished": "optional [A date value in ISO 8601 date format] date service was originally deployed",
+	"keywords": [
+		"recommended",
+		"text"
+	],
+	"obo:dependsOn": {
+		"@type": "PropertyValue",
+		"propertyID": "http://purl.obolibrary.org/obo/RO_0002502",
+		"value": [
+			"array of dependency statements"
+		]
+	},
+	"funder": {
+		"@type": "[Person or Organization]",
+		"name": "text"
+	},
+	"license": {
+		"@type": "[sdo:CreativeWork or sdo:URL]",
+		"name": "use if creativeWork",
+		"url": "use if CreativeWork or URL; if use url, the value is a string"
+	},
+	"dcat:qualifiedRelation": [{
+		"@type": "dcat:Relationsip",
+		"description":"one option for links to related resources",
+		"dct:relation": "(URI for related resource)",
+		"dcat:hadRole": "(URI for relationship type)"
+	}],
+	"isRelatedTo": [
+		{
+			"@type": "Product",
+			"name": "relationship label here [second option to represent related resources with some relationship semantics",
+			"url": "URI for related resource"
+		}
+	],
+	"ecrro:0000009(citation)": "text, recommended citation for this resource",
+	"dct:conformsTo": [
+		"Specification--ideally a URI;this should identify the specification for the interface(s) that the service implements, multiple values allowed"
+	],
+	"about": [
+		"science domain/community term"
+	],
+	"identifier": {
+		"@type": "sdo:PropertyValue,  or sdo:Text, or sdo:URL, example is for propertyValue",
+		"propertyID": "http://purl.org/spar/datacite/orcid",
+		"value": "0000-0003-2591-5293"
+	},
+	"ecrro:0000129(ECresourcematurity)": "text",
+	"ecrro:primaryPublication": "URI identifying the publication, or foaf:Document?",
+	"ecrro:registryContributor": {
+		"@type": "ContactPoint",
+		"name": "Metadata contributor",
+		"identifier": ""
+	},
+	"provider": {
+		"@type": "[Person or Oganization]",
+		"name": "Free text, the agent that maintains the service and makes it avaialable"
+	},
+	"ecrro:timeToLive": "text",
+	"url": "URLstring, link to human-readable document about the service",
+	"ecrro:usage": "free text",
+	"sourceOrganization": {
+		"@type": "Organization",
+		"name": "name of originating project",
+		"description": "identify the project that supported creation of the resource (for funding program tracking"
+	},
+	"audience": {
+		"@type": "Audience",
+		"description": "describe audience in text"
+	},
+	"potentialAction": [
+		{
+			"@type": "Use SDO Action or one of its  subtypes: SearchAction, UpdateAction, CreateAction, PlayAction?, ControlAction?",
+			"name": "each potential action is an offering-- a resource type (object), some operations, and the interchange format used to provide represenations of the resource; this assortment of options is bundled into a single 'sourceProfile' property on the result that is used for linking data sources (service, files) with software applications that can use those sources as input",
+			"description": "description of this offering--the resource offered, the interchange  format(s), and operation",
+			"ecrro:operation": "text or  URI that specifies the function associated  with this potential  action, generally will be a  CRUD function,  but might be more complex processing with other verbs that are tunneled on  HTTP",
+			"result": [
+				{
+					"@type": "[3DModel, ArchiveComponent, Article, Collection, DataDownload, DataFeed, Map, MediaObject, Movie, Photograph, SoftwareSourceCode, Thesis, WebPage] one of these-- should be a file-based resource representation that can be accessed on the web",
+					"encodingFormat": [
+						"array of content types"
+					],
+					"eccro:sourceProfile": "EarthCube registry URI for a sourceProfile",
+					"description": "each sourceProfile should be associated with a @type; the encodingFormation is the MIME type for HTTP accept headers to get this representation, but the urlTemplate is likely to specify the specific profile"
+				}
+			],
+			"target": {
+				"@type": "EntryPoint",
+				"urlTemplate": "URL template (RFC6570) to invoke the resource",
+				"description": "parameters in braces '{}', need to be explained in subsequent query-input PropertyValueSpecification elements",
+				"httpMethod": "for SearchAction, should generally be GET, Update--POST or DELETE, Create-PUT, play-GET, control-POST? ",
+				"contentType": [
+					"array of content types that can be requested in the HTTP accept header;if other http header key-value pairs need to be specified, might need another property here"
+				]
+			},
+			"query-input": [
+				{
+					"@id": "Optional: give the propertyValueSpecification an identifier if it is reused inother potentialActions",
+					"@type": "PropertyValueSpecification",
+					"valueName": "name of property from URLtemplate",
+					"description": "what does the property mean; note there are various other sdo:PropertyValueSpecification properties that might be valid here",
+					"valueRequired": true,
+					"valuePattern": "regex to validate"
+				}
+			],
+			"object": {
+				"@type": "the sdo type of the resource that is receiving the potential action request, commonly be DataFeed",
+				"additionalType": [
+					"additional type identifiers more specific to the resource type at this EntryPoint"
+				],
+				"description": "what would be useful here is a listing of the attributes that are associated with the target resource; ideally indicate what will appear in the output representation, but these are not sdo:..._output properties because they will be inside the response document.",
+				"variableMeasured": {
+					"@type": "PropertyValue",
+					"name": "name of the variable",
+					"description": "example of documentation for a varible provided in the result object",
+					"propertyID": "URI for the property in some ontology",
+					"measurementTechnique": "URI for the measurement protocol, or text description of procedure and sensor"
+				}
+			}
+		}
+	]
+}
