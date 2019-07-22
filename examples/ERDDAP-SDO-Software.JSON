@@ -27,9 +27,7 @@
 		"visualization",
 		"data transformation"
 	],
-	"obo:depends on": {
-		"propertyID": "http://purl.obolibrary.org/obo/RO_0002502",
-		"value": [
+		"<http://purl.obolibrary.org/obo/RO_0002502> (obo:depends on)": [
 			"Java Runtime environment 1.8",
 			"Tomcat 8"
 		]

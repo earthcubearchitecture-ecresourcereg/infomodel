@@ -17,7 +17,7 @@
 		"ecrro:****type***** have to sort out abbreviations and context lookups for opaque ecrro URIs"
 	],
 	"name": "text",
-	"description": "Put description of the resource here, and remove this note. The JSON format does not allow multiple keys for additional property, so all eccr properties added in the model are grouped in an array of additional property intances",
+	"description": "Put description of the resource here, and remove this note. This resource type is not restricted only to source code, but the sdo type is included to use properties on the sdo:softwareSourceCode type",
 	"creator": {
 		"@Type": "[Organization or Person]",
 		"name": "Text"
@@ -26,14 +26,9 @@
 	"keywords": [
 		"text"
 	],
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"name": "obo:depends on",
-		"propertyID": "http://purl.obolibrary.org/obo/RO_0002502",
-		"value": [
-			"array of dependency statements"
-		]
-	},
+		"<http://purl.obolibrary.org/obo/RO_0002502> (obo:depends on)": [
+		"an array of dependency statements"
+	],
 	"funder": {
 		"@type": "[Person or Organization]",
 		"name": "text"
@@ -43,34 +38,22 @@
 		"name": "use if creativeWork",
 		"url": "use if CreativeWork or URL; if use url, the value is a string"
 	},
-	"additionalProperty": [
+	"dcat:qualifiedRelation": [
 		{
-			"@type": "PropertyValue",
-			"propertyID": "dcat:qualifiedRelation",
-			"value": [
-				{
-					"@type": "dcat:Relation",
-					"dct:relation": "(URI for related resource)",
-					"dcat:hadRole": "(URI for relationship type)"
-				}
-			]
+			"@type": "dcat:Relation",
+			"dct:relation": "(URI for related resource)",
+			"dcat:hadRole": "(URI for relationship type)"
 		},
 		{
-			"isRelatedTo": [
-				{
-					"@type": "Product",
-					"name": "relationship label here [this is an alternate way to represent related resources with some relationship semantics",
-					"url": "URI for related resource"
-				}
-			]
+			"@type": ["dcat:Relation","Product"],
+			"name": "relationship label here [this is an alternate way to represent related resources with some relationship semantics",
+			"url": "URI for related resource"
 		}
 	],
-	"ecrro:0000009 (citation)": "text",
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"propertyID": "dct:conformsTo",
-		"value": "Specification--ideally a URI"
-	},
+	"ecrro:0000009 (citation)": "text: preferred citation for the described resource",
+	"dct:conformsTo": [
+		"Specification(s)--ideally a URI for the described resource"
+	],
 	"about": [
 		"science domain/community term"
 	],
@@ -81,37 +64,19 @@
 		"value": "0000-0003-2591-5293"
 	},
 	"ecrro:0000129 (EC resource maturity)": "text",
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"propertyID": "ecrro:primaryPublication",
-		"value": "URI identifying the publication, or foaf:Document?"
-	},
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"propertyID": "ecrro:registryContributor",
-		"name": "Metadata contributor",
-		"value": {
-			"@type": "ContactPoint",
-			"name": "",
-			"identifier": ""
-		}
+	"ecrro:primaryPublication": "URI identifying the publication, or foaf:Document?",
+	"ecrro:registryContributor": {
+		"@type": "ContactPoint",
+		"name": "Metadata contributor name",
+		"identifier": ""
 	},
 	"provider": {
 		"@type": "[Person or Oganization]",
 		"name": "Free text"
 	},
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"propertyID": "ecrro:timeToLive",
-		"value": "text"
-	},
+	"ecrro:timeToLive": "text",
 	"url": "URLstring",
-	"additionalProperty": {
-		"@type": "PropertyValue",
-		"propertyID": "ecrro:usage",
-		"name": "usage",
-		"value": "free text"
-	},
+	"ecrro:usage": "free text",
 	"sourceOrganization": {
 		"@type": "Organization",
 		"description": "originatingProject description"

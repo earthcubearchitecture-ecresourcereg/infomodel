@@ -6,7 +6,15 @@
 		"geolink": "http://schema.geolink.org/1.0/base/main#",
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
-		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_"
+		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
+		
+		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
+		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
+		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
+		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
+		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
+		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
+		
 	},
 	"@id": "urn:identifier.for.IRIS/FSDN/service",
 	"@type": [
@@ -14,9 +22,7 @@
 		"Product",
 		"WebAPI"
 	],
-	"additionalType": [
-		"ecrro:0000202 (EC Data Service)"
-	],
+	"additionalType": ["ECDataService"],
 	"name": "fdsnws-event Web Service",
 	"description": "The fdsnws-event web service returns event (earthquake) information from catalogs originating from the NEIC and the ISC data centers. Events may be selected based on location, time, catalog, contributor and internal identifiers. By default, events are retrieved from the NEIC PDE catalog for recent events and then the ISC catalog when it becomes available. These default results include only that catalog’s “primary origin” and “primary magnitude” for each event, they may optionally include all available magnitude estimates.  By default results are returned as XML in QuakeML format (schema), but may also be requested in text formats.",
 	"creator": {
@@ -28,13 +34,7 @@
 		"earthquake",
 		"seismic event"
 	],
-	"obo:dependsOn": {
-		"@type": "PropertyValue",
-		"propertyID": "http://purl.obolibrary.org/obo/RO_0002502",
-		"value": [
-			""
-		]
-	},
+	"obo:dependsOn":  [""],
 	"funder": {
 		"@type": "Organization",
 		"name": "National Science Foundation"
@@ -43,7 +43,7 @@
 		"@type": "sdo:CreativeWork",
 		"name": "missing"
 	},
-	"ecrro:0000009(citation)": "missing",
+	"citation": "missing",
 	"dct:conformsTo": [
 		"fdsnws-event Web API Version 1.2"
 	],
@@ -51,8 +51,8 @@
 		"seismology"
 	],
 	"identifier": "missing",
-	"ecrro:0000129(ECresourcematurity)": "in production",
-	"ecrro:primaryPublication": "missing",
+	"ECresourcematurity": "in production",
+	"primaryPublication": "missing",
 	"ecrro:registryContributor": {
 		"@type": "ContactPoint",
 		"name": "Stephen M Richard",
@@ -64,7 +64,7 @@
 	},
 	"ecrro:timeToLive": "> 5 years",
 	"url": "http://service.iris.edu/fdsnws/event/1",
-	"ecrro:usage": "> 10 technologist and geoscientists",
+	"usage": "> 10 technologist and geoscientists",
 	"sourceOrganization": {
 		"@type": "Organization",
 		"name": "",
