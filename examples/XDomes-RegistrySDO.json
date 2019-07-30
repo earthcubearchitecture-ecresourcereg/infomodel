@@ -1,0 +1,107 @@
+{
+	"@context": {
+		"@vocab": "http://schema.org/",
+		"datacite": "http://purl.org/spar/datacite/",
+		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
+		"geolink": "http://schema.geolink.org/1.0/base/main#",
+		"vivo": "http://vivoweb.org/ontology/core#",
+		"dcat": "http://www.w3.org/ns/dcat#",
+		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_"
+	},
+	"@id": "ID for this metadata record",
+	"@type": [
+		"CreativeWork",
+		"Product"
+	],
+	"additionalType": [
+		"ecrro:****type***** have to sort out abbreviations and context lookups for opaque ecrro URIs"
+	],
+	"name": "X-DOMES Ontology Registry and Repository (X-DOMES ORR)",
+	"description": "A registry and repository service for sensor terms",
+	"creator": [
+		{
+			"@Type": "Person",
+			"name": "Janet Fredericks",
+			"identifier": "https://orcid.org/0000-0001-6143-5700}"
+		},
+		{
+			"@Type": "Person",
+			"name": "Felimon Gayanilo"
+		},
+		{
+			"@Type": "Person",
+			"name": "Carlos Rueda"
+		}
+	],
+	"datePublished": "[A date value in ISO 8601 date format]",
+	"keywords": [
+		"sensor",
+		"instrument",
+		"sensor types", "observable properties", "sensor capabilities"
+	],
+	"<http://purl.obolibrary.org/obo/RO_0002502> (obo:depends on)": [
+		"an array of dependency statements"
+	],
+	"funder": {
+		"@type": "Organization",
+		"name": "National Science Foundation, EarthCube Integrative Activity."
+	},
+	"license": "",
+	"dcat:qualifiedRelation": [
+		{
+			"@type": "dcat:Relation",
+			"dct:relation": "SensorML Registry and Repository",
+			"dcat:hadRole": "see also"
+		}
+	],
+	"ecrro:0000009 (citation)": "",
+	"dct:conformsTo": [
+		""
+	],
+	"about": [
+		"real time monitoring, instrumentation"
+	],
+	"identifier": "",
+	"ecrro:0000129 (EC resource maturity)": "in production",
+	"ecrro:primaryPublication": "",
+	"ecrro:registryContributor": {
+		"@type": "ContactPoint",
+		"name": "Janet Fredericks",
+		"identifier": "https://orcid.org/0000-0001-6143-5700"
+	},
+	"provider": [
+		{
+			"@type": "Person",
+			"name": "Felimon Gayanilo "
+		},
+		{
+			"@type": "Person",
+			"name": "Carlos Rueda"
+		}
+	],
+	"ecrro:timeToLive": "EarthCube project",
+	"url": [
+		"http://xdomes.org/ont#",
+		"https://mmisw.org/orrdoc/"
+	],
+	"ecrro:usage": "more than 10 users",
+	"sourceOrganization": [
+		{
+			"@type": "Organization",
+			"name": "Marine Metadata Initiative",
+			"description": "original developers of software"
+		},
+		{
+			"@type": "Organization",
+			"name": "Cross-Domain Observational Metadata for Environmental Sensing (X-DOMES) project",
+			"url": "https://www.earthcube.org/group/x-domes"
+		}
+	],
+	"audience": {
+		"@type": "Audience",
+		"description": "domain_researchers who use sensors; SPARQL queries from the SensorML Registry & Repository (SRR)"
+	},
+	"eccro:interface": [
+	"<eccro:SPARQL endpoint>", "<eccro:ORR upload>"
+	]
+}
