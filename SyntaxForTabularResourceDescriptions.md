@@ -17,7 +17,7 @@ A set of operations, messages used to invoke the operations, and inputs necessar
 
 ## Interchange format
 
-A serialization scheme (data format) that implements some information model (schema and vocabulary) to communicate information between agents. Most general values are for generic formats specified by typical MIME types, but includes much more granular identification of schemes that are specific to particular applications.  An Interchange Format SHOULD have an associated specification that documents its provisions and usage.
+A serialization scheme (data format) for communication between agents. Most general values are for generic formats specified by typical MIME types, but includes much more granular identification of schemes that are specific to particular applications. These generally implement some underlying information model (schema and vocabulary) that enables semantic as well as syntactic interoperability.  An Interchange Format SHOULD have an associated specification that documents its provisions and usage. Registered interchange formats are intended to provide identifiers for data serialization formats that work with specific applications.  In situations where no specification resource is availalbe to document the  format, it is sufficient to simply identify the format as an application specific format. This is the case for various commercial applications that use proprietary formats, as well as for scientific model input and output formats.
 
 
 ## Service, Interchange format, Interface/API
@@ -45,9 +45,11 @@ Moving from the text realm to the data realm, let's imagine our text file actual
 
 This is obviously only the tip of the iceberg problem of matching data with applications in a distributed information system like EarthCube, but we are at a point where these linkages can be engineered for relatively simple cases. 
 
-### Linkages in the Registry
+### Linking Services, API, input and output formats in the Registry
 
-Service resources in the ECRR represent service instances. A service instance must implement some interface, but in many cases, a particular service instance is a one-of implementation for some specific application. In such cases, there is typically no Specification for either the interface or the interchange format used for output from the service  that can be registered independently in the registry. In these cases, all information describing the service operation must be included in the Service registration.  In cases where there are specifications for the interface or interchange format, these can be linked.
+Service resources in the ECRR represent service instances. A service instance must implement some interface, but in many cases, a particular service instance is a one-of implementation for some specific application. In such cases, there is typically no Specification for either the interface or the input or output interchange format that can be registered independently in the registry. In these cases, all information describing the service operation must be included in the Service registration.  In cases where there are specifications for the interface or input or output interchange format, these can be linked either to a Specification in the ECRR, or if there is a resolvable URI that can be used as the link target. 
+
+If the input and output formats for communication with a service are not specified in detail, with only a MIME type, the standard MIME type label (e.g. text/xml, text/csv) can be used. 
 
 ## Semantic Resources
 
@@ -70,7 +72,7 @@ A storage system in which objects may be stored for subsequent access or retriev
 
 ## Specification
 
-A document that describes the technical characteristics of an artifact or practice, possibly including a description of what it should do, or an explicit set of requirements that it must satisfy (http://en.wikipedia.org/wiki/Specification).  All resources may have a conformsTo property that should be a link to a specification.  Specifications may be hierarchical, e.g. a profile specification might inherit provisions from a parent specification, and add additional constraints to further restrict usage of the artifact or practice.
+A document that describes the technical characteristics of an artifact or practice, possibly including a description of what it should do, or an explicit set of requirements that it must satisfy (http://en.wikipedia.org/wiki/Specification).  Software, Interface/API and Interchange format resoruces may have an associated specification linked via the 'Conforms to' property.  Specifications may be hierarchical, e.g. a profile specification might inherit provisions from a parent specification, and add additional constraints to further restrict usage of the artifact or practice.
 
 
 ----------
@@ -345,9 +347,9 @@ sdo:version some Text
 
 
 
-### ConformsTo
+### Conforms to
 
-for an interchange format, this field is a link to the specification document that defines the format.
+For an interchange format or interface, this field is a link to the specification document that defines the format.  Ideally the specification should be registered as a specification resource in the registry, but any resolvable URI is valid. 
 
 ### Scope
 
