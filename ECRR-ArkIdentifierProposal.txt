@@ -1,0 +1,26 @@
+Registering ARK identifier naming authority for EarthCube
+
+For construction of the EarthCube resource registry, we would like to establish EarthCube as a naming authority in the ARK identifier URI space. Briefly, an ARK is represented by a sequence of characters that contains the label, "ark:". When embedded in a URL, it is preceded by the protocol ("http://" or "https://") and the host name of a mapping service that provides support for resolving the ARK identifier to a web location. That service name, or the "Name Mapping Authority" (NMA), is mutable and replaceable, as neither the web server itself nor the current web protocols are expected to last longer than the identified objects. The immutable, globally unique identifier follows the "ark:" label. This includes a "Name Assigning Authority Number" (NAAN) identifying the naming organization, followed by the name that it assigns to the object. 
+
+Here is a diagrammed example:
+
+   http://example.org/ark:/12025/654xz321/s3/f8.05v.tiff
+   \________________/ \__/ \___/ \______/ \____________/
+     (replaceable)     |     |      |       Qualifier
+          |       ARK Label  |      |    (NMA-supported)
+          |                  |      |
+Name Mapping Authority       |    Name (NAA-assigned)
+         (NMA)               |
+                  Name Assigning Authority Number (NAAN)
+
+The ARK syntax can be summarized,
+[http://NMA/]ark:/NAAN/Name[Qualifier]
+
+See https://n2t.net/e/ark_ids.html for documentation on the ARK identifier scheme. 
+
+Recommendations for ARK identifiers are to use semantically opaque strings for names and qualifies, to avoid problems when stewardship of resources change, or resources are renamed--eventualities that experience has shown to be virtually inevitable.
+
+Registration of EarthCube as a Name Assigning Authority would result in issuance of a Name Assigning Authority Number (NAAN), which is a 5 digit integer. The ark: URIs could be used by the EarthCube community for minting identifiers that don't qualify for getting DOI URIs, or identifiers from some other source. In constructing identifiers for the EarthCube registry (ECRR), we propose that the EarthCube Name Assigning Authority (most likely the EC office tech team until some other management scheme is developed) assign Names to different domains in the EarthCube jurisdiction when they are requested. The resource registry would be the first. The NAA-assigned Name string for identifying the ECRR is arbitrary; we recommend using three character alphanumeric strings with no special characters.  The ECRR can then independently assign identifiers for the qualifier segment of the ARK identifiers for registry items.
+
+In order for the EC identifiers to be web resolvable, a Name Mapping Authority (NMA) must be established. There are two main options for the NMA: 1). EarthCube deploys and maintains its own server for the name mapping (302 redirects in HTTP protocol jargon), or 2) EarthCube subscribe to the EZID service to supply the name mapping function. Because the EC office is at UC San Diego, using EZID would be free. If the office were not affiliated with UC, the EZID service would cost $500/year I think, assuming EarthCube is considered a research group (see https://ezid.cdlib.org/learn/). If EarthCube deploys some server infrastructure that has prospects for long term (3-5 yr) stability, we could move the resolver there when its ready, and it might cost less. Another possibility would be registering ark: identifiers in the ESIP Community Ontology Registry, but that might be considered out of  The benefit of going with EZID is we can be in business immediately, and is free while the office is affiliated with UCSD. 
+
