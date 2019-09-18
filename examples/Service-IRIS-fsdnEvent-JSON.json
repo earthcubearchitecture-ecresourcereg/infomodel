@@ -22,7 +22,7 @@
 		"Product",
 		"WebAPI"
 	],
-	"additionalType": ["ECDataService"],
+	"additionalType": "ECDataService",
 	"name": "fdsnws-event Web Service",
 	"description": "The fdsnws-event web service returns event (earthquake) information from catalogs originating from the NEIC and the ISC data centers. Events may be selected based on location, time, catalog, contributor and internal identifiers. By default, events are retrieved from the NEIC PDE catalog for recent events and then the ISC catalog when it becomes available. These default results include only that catalog’s “primary origin” and “primary magnitude” for each event, they may optionally include all available magnitude estimates.  By default results are returned as XML in QuakeML format (schema), but may also be requested in text formats.",
 	"creator": {
@@ -34,7 +34,7 @@
 		"earthquake",
 		"seismic event"
 	],
-	"obo:dependsOn":  [""],
+
 	"funder": {
 		"@type": "Organization",
 		"name": "National Science Foundation"
@@ -43,7 +43,7 @@
 		"@type": "sdo:CreativeWork",
 		"name": "missing"
 	},
-	"citation": "missing",
+
 	"dct:conformsTo": [
 		"fdsnws-event Web API Version 1.2"
 	],
@@ -54,7 +54,7 @@
 	"ECresourcematurity": "in production",
 	"primaryPublication": "missing",
 	"ecrro:registryContributor": {
-		"@type": "ContactPoint",
+		"@type": "Person",
 		"name": "Stephen M Richard",
 		"identifier": "0000-0001-6041-5302"
 	},
@@ -62,269 +62,264 @@
 		"@type": "Oganization",
 		"name": "IRIS DMC"
 	},
-	"ecrro:timeToLive": "> 5 years",
+	"ecrro:expectedLifetime": "> 5 years",
 	"url": "http://service.iris.edu/fdsnws/event/1",
-	"usage": "> 10 technologist and geoscientists",
-	"sourceOrganization": {
-		"@type": "Organization",
-		"name": "",
-		"description": ""
-	},
+	"usage": "wide usage",
+
 	"audience": {
 		"@type": "Audience",
-		"description": "Technology savvy scientists and interested public"
-	},
+		"audienceType": ["technologists", "members of the public"]
+		},
 	"potentialAction": [
 		{
 			"@type": "SearchAction",
 			"name": "Query",
 			"description": "query service to obtain records of seismic events",
-			"ecrro:operation": "GET",
+			"ecrro:httpMethod": "GET",
 			"result": [
 				{
 					"@type": "DataDownload",
 					"encodingFormat": [
 						"application/xml+QuakeML",
-						"text/csv",
-						"text/csv+geocsv"
-					],
-					"eccro:sourceProfile": [
-						"QuakeML",
-						"",
+						"text/csv","QuakeML",
+						"text/csv+geocsv",
 						"GeoCSV-SeismicEvent"
 					],
-					"description": "encodingFormat values correspond to eccro:sourceProfile values according to their index in the JSON array"
+				"description": "XML, csv, or csv fromat for seismic event following EarthCube geoWs conventions."
 				}
 			],
 			"target": {
 				"@type": "EntryPoint",
 				"urlTemplate": "http://service.iris.edu/fdsnws/event/1/query?{geographic-constraints}&{depth-constraints}&{temporal-constraints}&{magnitude-constraints}&{organization-constraints}&{misc-parameters}&{format-option}&{nodata=404}",
-				"description": "URL with multiple query paramters--geographic location, event depth, time period of event, event magnitude, source network, miscellaneous parameters, formt for returned data, and what flat to use for no data",
-				"httpMethod": [
-					"GET",
-					"POST"
-				],
-				"contentType": [
-					"application/xml+QuakeML",
-					"text/csv",
-					"text/csv+geocsv"
-				]
+				"description": "URL with multiple query paramters--geographic location, event depth, time period of event, event magnitude, source network, miscellaneous parameters, formt for returned data, and what flat to use for no data.  TBD-- how to handle POST request version; need to specify the format for the POST content",
+				"httpMethod":"GET",
+				"uriTemplate-input": [
+					{
+						"@id": "urn:iris:fsdn.starttime",
+						"@type": "PropertyValueSpecification",
+						"valueName": "start",
+						"defaultValue": "Any",
+						"description": "allowed: Any valid time. Limit to events on or after the specified start time; use UTC for time zone",
+						"valueRequired": true,
+						"valuePattern": "regex for datetime or 'Any'?",
+						"xsd:type": "dateTime"
+					},
+					{
+						"@id": "urn:iris:fsdn.endtime",
+						"@type": "PropertyValueSpecification",
+						"valueName": "end",
+						"defaultValue": "Any",
+						"description": "allowed: Any valid time. Limit to events on or before the specified start time",
+						"valueRequired": true,
+						"valuePattern": "regex for UTC or 'Any'?"
+					},
+					{
+						"@id": "urn:iris:fsdn.minlatitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "minlat",
+						"defaultValue": "-90.0",
+						"description": "Limit to events with a latitude larger than or equal to the specified minimum. Value must be less that maxlat",
+						"valueRequired": true,
+						"valuePattern": "-90.0 to 90.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.maxlatitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "maxlat",
+						"defaultValue": "90.0",
+						"description": "Limit to events with a latitude smaller than or equal to the specified minimum. Value must be greater than minlat",
+						"valueRequired": true,
+						"valuePattern": "-90.0 to 90.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.minlongitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "minlon",
+						"defaultValue": "-180.0",
+						"description": "Limit to events with a longitude larger than or equal to the specified minimum.",
+						"valueRequired": true,
+						"valuePattern": "-180.0 to 180.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.maxlongitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "maxlon",
+						"defaultValue": "180.0",
+						"description": "Limit to events with a longitude smaller than or equal to the specified maximum.",
+						"valueRequired": true,
+						"valuePattern": "-180.0 to 180.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.latitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "lat",
+						"defaultValue": "0.0",
+						"description": "Specify the latitude to be used for a radius search.",
+						"valueRequired": false,
+						"valuePattern": "-90.0 to 90.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.longitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "lon",
+						"defaultValue": "0.0",
+						"description": "Specify the longitude to be used for a radius search.",
+						"valueRequired": false,
+						"valuePattern": "-180.0 to 180.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.minradius",
+						"@type": "PropertyValueSpecification",
+						"valueName": "minradius",
+						"defaultValue": "0.0",
+						"description": "Limit to events within the specified minimum number of degrees from the geographic point defined by the latitude and longitude parameters.",
+						"valueRequired": false,
+						"valuePattern": "0.0 to 180.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.maxradius",
+						"@type": "PropertyValueSpecification",
+						"valueName": "maxradius",
+						"defaultValue": "180.0",
+						"description": "Limit to events within the specified maximum number of degrees from the geographic point defined by the latitude and longitude parameters.",
+						"valueRequired": false,
+						"valuePattern": "0.0 to 180.0",
+						"xsd:type": "float",
+						"unitOfMeasure": "degrees"
+					},
+					{
+						"@id": "urn:iris:fsdn.mindepth",
+						"@type": "PropertyValueSpecification",
+						"valueName": "mindepth",
+						"defaultValue": "Any",
+						"description": "Limit to events with depth more than the specified minimum",
+						"valueRequired": true,
+						"minvalue":"",
+						"maxvalue":"",
+						"valuePattern": "Any valid depth",
+						"xsd:type": "float",
+						"unitOfMeasure": "kilometers"
+					},
+					{
+						"@id": "urn:iris:fsdn.maxdepth",
+						"@type": "PropertyValueSpecification",
+						"valueName": "maxdepth",
+						"defaultValue": "Any",
+						"description": "Limit to events with depth less than the specified minimum",
+						"valueRequired": true,
+						"minvalue":"",
+						"maxvalue":"",
+						"valuePattern": "Any valid depth",
+						"xsd:type": "float",
+						"unitOfMeasure": "kilometers"
+					},
+					{
+						"@id": "urn:iris:fsdn.minmagnitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "minmag",
+						"defaultValue": "Any",
+						"description": "Limit to events with a magnitude greater than the specified maximum.",
+						"valueRequired": true,
+						"minvalue":"",
+						"maxvalue":"",
+						"valuePattern": "Any valid magnitude",
+						"xsd:type": "float",
+						"unitOfMeasure": "determined by magtype"
+					},
+					{
+						"@id": "urn:iris:fsdn.maxmagnitude",
+						"@type": "PropertyValueSpecification",
+						"valueName": "maxmag",
+						"defaultValue": "Any",
+						"description": "Limit to events with a magnitude smaller than the specified maximum.",
+						"valueRequired": true,
+						"minvalue":"",
+						"maxvalue":"",
+						"valuePattern": "Any valid magnitude",
+						"xsd:type": "float",
+						"unitOfMeasure": "determined by magtype"
+					},
+					{
+						"@id": "urn:iris:fsdn.magnitudetype",
+						"@type": "PropertyValueSpecification",
+						"valueName": "magtype",
+						"defaultValue": "Any",
+						"description": "Specify a magnitude type to use for testing the minimum and maximum limits",
+						"valueRequired": false,
+						"valuePattern": "Any valid magnitude type",
+						"xsd:type": "string",
+						"valueOptions": [
+						
+						]
+					},
+					{
+						"@id": "urn:iris:fsdn.eventtype",
+						"@type": "PropertyValueSpecification",
+						"valueName": "eventtype",
+						"defaultValue": "Any",
+						"description": "Limit to events with a specified eventType. The parameter value can be a single item, a comma-separated list of items.",
+						"valueRequired": false,
+						"valuePattern": "Allowed values are from QuakeML or unknown if eventType is not given",
+						"xsd:type": "string",
+						"valueOptions": [
+						
+						]
+					},
+					{
+						"@id": "urn:iris:fsdn.includeallorigins",
+						"@type": "PropertyValueSpecification",
+						"valueName": "includeallorigins",
+						"defaultValue": "FALSE",
+						"description": "Specify if all origins for the event should be included, default is data center dependent but is suggested to be the preferred origin only.",
+						"valuePattern": "TRUE or FALSE",
+						"xsd:type": "boolean"
+					},
+					{
+						"@id": "urn:iris:fsdn.includeallmagnitudes",
+						"@type": "PropertyValueSpecification",
+						"valueName": "includeallmagnitudes",
+						"defaultValue": "FALSE",
+						"description": "Specify if all magnitudes for the event should be included, default is data center dependent but is suggested to be the preferred magnitude only.",
+						"valueRequired": "TRUE or FALSE",
+						"xsd:type": "boolean"
+					},
+					{
+						"@id": "urn:iris:fsdn.includearrivals",
+						"@type": "PropertyValueSpecification",
+						"valueName": "includearrivals",
+						"defaultValue": "FALSE",
+						"description": "Specify if phase arrivals should be included.",
+						"valueRequired": "TRUE or FALSE",
+						"xsd:type": "boolean"
+					},
+					{
+						"@id": "urn:iris:fsdn.eventid",
+						"@type": "PropertyValueSpecification",
+						"valueName": "eventid",
+						"defaultValue": "Any",
+						"description": "Select a specific event by ID; event identifiers are data center specific.",
+						"valueRequired": false,
+						"valuePattern": "Any valid ID",
+						"xsd:type": "string"
+					}
+			]
 			},
-			"query-input": [
-				{
-					"@id": "urn:iris:fsdn.starttime",
-					"@type": "PropertyValueSpecification",
-					"valueName": "start",
-					"defaultValue": "Any",
-					"description": "allowed: Any valid time. Limit to events on or after the specified start time; use UTC for time zone",
-					"valueRequired": true,
-					"valuePattern": "regex for datetime?",
-					"xsd:type": "dateTime"
-				},
-				{
-					"@id": "urn:iris:fsdn.endtime",
-					"@type": "PropertyValueSpecification",
-					"valueName": "end",
-					"defaultValue": "Any",
-					"description": "allowed: Any valid time. Limit to events on or before the specified start time",
-					"valueRequired": true,
-					"valuePattern": "regex for UTC?"
-				},
-				{
-					"@id": "urn:iris:fsdn.minlatitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "minlat",
-					"defaultValue": "-90.0",
-					"description": "Limit to events with a latitude larger than or equal to the specified minimum.",
-					"valueRequired": true,
-					"valuePattern": "-90.0 to 90.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.maxlatitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "maxlat",
-					"defaultValue": "90.0",
-					"description": "Limit to events with a latitude smaller than or equal to the specified minimum.",
-					"valueRequired": true,
-					"valuePattern": "-90.0 to 90.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.minlongitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "minlon",
-					"defaultValue": "-180.0",
-					"description": "Limit to events with a longitude larger than or equal to the specified minimum.",
-					"valueRequired": true,
-					"valuePattern": "-180.0 to 180.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.maxlongitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "maxlon",
-					"defaultValue": "180.0",
-					"description": "Limit to events with a longitude smaller than or equal to the specified maximum.",
-					"valueRequired": true,
-					"valuePattern": "-180.0 to 180.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.latitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "lat",
-					"defaultValue": "0.0",
-					"description": "Specify the latitude to be used for a radius search.",
-					"valueRequired": false,
-					"valuePattern": "-90.0 to 90.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.longitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "lon",
-					"defaultValue": "0.0",
-					"description": "Specify the longitude to be used for a radius search.",
-					"valueRequired": false,
-					"valuePattern": "-180.0 to 180.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.minradius",
-					"@type": "PropertyValueSpecification",
-					"valueName": "minradius",
-					"defaultValue": "0.0",
-					"description": "Limit to events within the specified minimum number of degrees from the geographic point defined by the latitude and longitude parameters.",
-					"valueRequired": false,
-					"valuePattern": "0.0 to 180.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.maxradius",
-					"@type": "PropertyValueSpecification",
-					"valueName": "maxradius",
-					"defaultValue": "180.0",
-					"description": "Limit to events within the specified maximum number of degrees from the geographic point defined by the latitude and longitude parameters.",
-					"valueRequired": false,
-					"valuePattern": "0.0 to 180.0",
-					"xsd:type": "float",
-					"unitOfMeasure": "degrees"
-				},
-				{
-					"@id": "urn:iris:fsdn.mindepth",
-					"@type": "PropertyValueSpecification",
-					"valueName": "mindepth",
-					"defaultValue": "Any",
-					"description": "Limit to events with depth more than the specified minimum",
-					"valueRequired": true,
-					"valuePattern": "Any valid depth",
-					"xsd:type": "float",
-					"unitOfMeasure": "kilometers"
-				},
-				{
-					"@id": "urn:iris:fsdn.maxdepth",
-					"@type": "PropertyValueSpecification",
-					"valueName": "maxdepth",
-					"defaultValue": "Any",
-					"description": "Limit to events with depth less than the specified minimum",
-					"valueRequired": true,
-					"valuePattern": "Any valid depth",
-					"xsd:type": "float",
-					"unitOfMeasure": "kilometers"
-				},
-				{
-					"@id": "urn:iris:fsdn.minmagnitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "minmag",
-					"defaultValue": "Any",
-					"description": "Limit to events with a magnitude greater than the specified maximum.",
-					"valueRequired": true,
-					"valuePattern": "Any valid magnitude",
-					"xsd:type": "float",
-					"unitOfMeasure": "determined by magtype"
-				},
-				{
-					"@id": "urn:iris:fsdn.maxmagnitude",
-					"@type": "PropertyValueSpecification",
-					"valueName": "maxmag",
-					"defaultValue": "Any",
-					"description": "Limit to events with a magnitude smaller than the specified maximum.",
-					"valueRequired": true,
-					"valuePattern": "Any valid magnitude",
-					"xsd:type": "float",
-					"unitOfMeasure": "determined by magtype"
-				},
-				{
-					"@id": "urn:iris:fsdn.magnitudetype",
-					"@type": "PropertyValueSpecification",
-					"valueName": "magtype",
-					"defaultValue": "Any",
-					"description": "Specify a magnitude type to use for testing the minimum and maximum limits",
-					"valueRequired": false,
-					"valuePattern": "Any valid magnitude type",
-					"xsd:type": "string"
-				},
-				{
-					"@id": "urn:iris:fsdn.eventtype",
-					"@type": "PropertyValueSpecification",
-					"valueName": "eventtype",
-					"defaultValue": "Any",
-					"description": "Limit to events with a specified eventType. The parameter value can be a single item, a comma-separated list of items.",
-					"valueRequired": false,
-					"valuePattern": "Allowed values are from QuakeML or unknown if eventType is not given",
-					"xsd:type": "string"
-				},
-				{
-					"@id": "urn:iris:fsdn.includeallorigins",
-					"@type": "PropertyValueSpecification",
-					"valueName": "includeallorigins",
-					"defaultValue": "FALSE",
-					"description": "Specify if all origins for the event should be included, default is data center dependent but is suggested to be the preferred origin only.",
-					"valueRequired": "TRUE or FALSE",
-					"xsd:type": "boolean"
-				},
-				{
-					"@id": "urn:iris:fsdn.includeallmagnitudes",
-					"@type": "PropertyValueSpecification",
-					"valueName": "includeallmagnitudes",
-					"defaultValue": "FALSE",
-					"description": "Specify if all magnitudes for the event should be included, default is data center dependent but is suggested to be the preferred magnitude only.",
-					"valueRequired": "TRUE or FALSE",
-					"xsd:type": "boolean"
-				},
-				{
-					"@id": "urn:iris:fsdn.includearrivals",
-					"@type": "PropertyValueSpecification",
-					"valueName": "includearrivals",
-					"defaultValue": "FALSE",
-					"description": "Specify if phase arrivals should be included.",
-					"valueRequired": "TRUE or FALSE",
-					"xsd:type": "boolean"
-				},
-				{
-					"@id": "urn:iris:fsdn.eventid",
-					"@type": "PropertyValueSpecification",
-					"valueName": "eventid",
-					"defaultValue": "Any",
-					"description": "Select a specific event by ID; event identifiers are data center specific.",
-					"valueRequired": false,
-					"valuePattern": "Any valid ID",
-					"xsd:type": "string"
-				}
-			],
 			"object": {
 				"@type": "DataFeed",
-				"additionalType": [
-					""
-				],
 				"description": "list of properties  that are included in seismic event description in response documents",
 				"variableMeasured": [
 					{

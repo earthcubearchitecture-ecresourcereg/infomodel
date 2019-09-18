@@ -19,7 +19,7 @@
     ],
     "name": "Semantic Web for Earth and Environmental Terminology (SWEET)",
     "description": "Mid-level ontology for Earth and Environmental Science. SWEET ontologies are written in the OWL ontology language and are publicly available. SWEET 2.3 is highly modular with 6000 concepts in 200 separate ontologies. You can view the entire concept space from an OWL tool such as Protege by reading in sweetAll.owl. Alternatively, these ontologies can be viewed individually. SWEET 2.3 consists of nine top-level concepts/ontologies. Some of the next-level concepts are shown in the Figure. SWEET is a middle-level ontology; most users add a domain-specific ontology using the components defined here to satisfy end user needs (Source: NASA JPL). The original version was developed by Robert Raskin at JPL (see Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020 ). Stewardship has been taken over by the Earth Science Information Partners Federation (ESIPFed), managed through a GitHub repository at https://github.com/ESIPFed/sweet.  See https://github.com/ESIPFed/sweet/blob/master/CONTRIBUTING.md for information about providing comments or contributing to development of SWEET.",
-    "license": "Apache License 2.0",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
     "citation": [
         "(2015-04-30), Semantic Web for Earth and Environmental Terminology (SWEET), urn:cinergiinventory639.",
         "Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020"
@@ -28,29 +28,16 @@
     "identifier": "http://sweetontology.net/sweetAll",
     "status": "Used in multiple places",
     "documentation": "Raskin and  Pan, 2005:  https://www.sciencedirect.com/science/article/pii/S0098300405001020",
-    "additionalProperty": [
-        {
-            "@type": "PropertyValue",
-            "propertyID": "registryContributor",
-            "value": {
-                "@type": "ContactPoint",
+    "ecrro:registryContributor": {
+                "@type": "Person",
                 "name": "Stephen M. Richard",
                 "email": "datadiscoverycurator@datadiscoverystudio.org"
-            }
-        },
-        {
-            "@type": "PropertyValue",
-            "propertyID": "representationFormat",
-            "value": {
-                "@type": "StructuredValue",
-                "name": "owl version 3.2.0; application/x-turtle",
-                "identifier": "http://earthcube.org/resources/35736487"
-            }
-        }
-    ],
+            },
+    "encodingFormat": "owl version 3.2.0; application/x-turtle",
     "creator": [
         {
             "@type": "Person",
+			"name":"Robert Raskin",
             "givenName": "Robert",
             "familyName": "Raskin",
             "worksFor": "Jet Propulsion Lab, NASA",
@@ -58,7 +45,7 @@
         }
     ],
     "datePublished": "2015-04-30",
-    "encodingFormat": "application/x-turtle",
+
     "codeRepository": "https://github.com/ESIPFed/sweet",
     "programmingLanguage": "owl version 3.2.0",
     "distribution": [
@@ -93,6 +80,7 @@
     },
     "spatialCoverage": {
         "@type": "Place",
-        "description": "Earth"
+		"name":"non-geographic",
+        "description": "This information model is not specific to any particulary location"
     }
 }

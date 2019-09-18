@@ -13,16 +13,25 @@
 		"CreativeWork",
 		"Product"
 	],
-	"additionalType": [	"ecrro:Specification"],
+	"additionalType": ["ecrro:Specification"],
 	"name": "COARDS Conventions for the standardization of NetCDF files",
 	"description": "version 1.0.2 release, A set of conventions adopted in order to promote the interchange and sharing of files created with the netCDF Application Programmer Interface (API). This standard is based upon version 2.3 of netCDF. Documentation of the netCDF API may be found in the NetCDF documentation.",
-	"creator": {
+	"creator": [
+		{
 		"@Type": "Organization",
-		"name": ["CIRES (University of Colorado Joint Institute, Boulder CO)", "JISAO (University of Washington Joint Institute, Seattle WA)", "Climate Data Center, Boulder CO", "NCDC, Asheville NC", "PMEL, Seattle WA"]
-	},
+		"name": "CIRES (University of Colorado Joint Institute, Boulder CO)"},
+		{"@Type": "Organization",
+		"name": "JISAO (University of Washington Joint Institute, Seattle WA)"},
+		{"@Type": "Organization",
+		"name": "Climate Data Center, Boulder CO"},
+		{"@Type": "Organization",
+		"name":"NCDC, Asheville NC"}, 
+		{"@Type": "Organization",
+		"name":"PMEL, Seattle WA"}
+	],
 	"datePublished": "1995-05-01",
 	"keywords": ["NetCDF","interchange format","interoperability"],
-	"<http://purl.obolibrary.org/obo/RO_0002502> (obo:depends on)": [
+	"http://purl.obolibrary.org/obo/RO_0002502": [
 		"NetCDF 2.3","UdUnits 1.7.1"],
 		
 	"funder": {
@@ -30,15 +39,15 @@
 		"name": "NOAA"
 	},
 	"license": NONE,
-	"dcat:qualifiedRelation": [],
-	"ecrro:0000009 (citation)": "Anonymous, 2015-05-01,Conventions for the standardization of NetCDF files: Pacific Marine Environmental Laboaratory web page (last modified 2017-07-09, accessed at https://ferret.pmel.noaa.gov/Ferret/documentation/coards-netcdf-conventions",
-	"dct:conformsTo": [],
+
+	"http://purl.org/dc/terms/bibliographicCitation": "Anonymous, 2015-05-01,Conventions for the standardization of NetCDF files: Pacific Marine Environmental Laboaratory web page (last modified 2017-07-09, accessed at https://ferret.pmel.noaa.gov/Ferret/documentation/coards-netcdf-conventions",
+
 	"about": ["atmospheric and oceanographic research"],
-	"identifier": "",
-	"ecrro:0000129 (EC resource maturity)": "in production",
-	"ecrro:primaryPublication": "",
+
+	"ecrro:hasmaturitystate": "in production",
+
 	"ecrro:registryContributor": {
-		"@type": "ContactPoint",
+		"@type": "Person",
 		"name": "Stephen M. Richard",
 		"identifier": "https://orcid.org/0000-0001-6041-5302"
 	},
@@ -46,15 +55,15 @@
 		"@type": "Oganization",
 		"name": "National Oceanic and Atmospheric Administration, Pacific Marine Environmental Laboratory"
 	},
-	"ecrro:timeToLive": "in use since 1995, still maintained",
+	"ecrro:expectedLifetime": "> 5 yr",
 	"url": "https://ferret.pmel.noaa.gov/Ferret/documentation/coards-netcdf-conventions",
 	"ecrro:usage": "unknown",
-	"sourceOrganization": {
+	"eccro:stewardedby": {
 		"@type": "Organization",
 		"name": "Cooperative Ocean/Atmosphere Research Data Service, a NOAA/university cooperative,"
 	},
 	"audience": {
 		"@type": "Audience",
-		"description": "Data processing developer"
+		"audienceType": ["Data intermediary", "developer"]
 	}
 }
