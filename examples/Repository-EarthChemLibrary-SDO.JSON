@@ -7,6 +7,7 @@
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
 		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
+		"ado":"http://www.semanticweb.org/ruthduerr/ontologies/2019/7/ADO.owl/",
 		
 		"ECresourcematurity":"ecrro:0000129"
 	},
@@ -37,7 +38,7 @@
 	"license":  "https://www.earthchem.org/about/terms",
 
 
-	"about": "geochemistry",
+	"about": "<ado:ADO__0000030>",
 	"identifier":  "http://doi.org/10.17616/R3V644", 
 	
 	"ECresourcematurity": "Used in multiple places",
@@ -60,6 +61,6 @@
 	},
 	"audience": {
 		"@type": "Audience",
-		"audienceType": "Geoscientists and Geochemists"
+		"audienceType": "scientists"
 	}
 }

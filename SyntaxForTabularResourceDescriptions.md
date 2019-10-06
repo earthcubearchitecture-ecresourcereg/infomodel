@@ -1,3 +1,5 @@
+# Introduction
+## Schema development spreadsheets
 
 
 # Resource types
@@ -19,6 +21,10 @@ A set of operations, messages used to invoke the operations, and inputs necessar
 
 A serialization scheme (data format) for communication between agents. Most general values are for generic formats specified by typical MIME types, but includes much more granular identification of schemes/Data Types/Data Specification that are specific to particular applications. These generally implement some underlying information model (schema and vocabulary) that enables semantic as well as syntactic interoperability.  An Interchange Format SHOULD have an associated specification that documents its provisions and usage. Registered interchange formats are intended to provide identifiers for data serialization formats that work with specific applications. Links to registered formats would be via URI values for the inputFormat and outputFormat properties on an Interface/API, Software, or Service resource.  In situations where no specification resource is available to document the format, it is sufficient to simply identify the format as an application specific format. This is the case for various commercial applications that use proprietary formats, as well as for scientific model input and output formats.
 
+### Input and Output format encoding
+
+Service, Software, and Interface/API resources have properties to specify the interchange format for input and output. In the case that the format is only specified at the generic syntax level, a MIME type for the file format is specified here. Formats that specify particular vocabularies, xml schema, or other requirements and enable a higher level of interoperability should in general have entries in the EC registry, and are linked via their registry URI to the resource that uses them. In unusual cases for which a MIME type,  EC Interchange Format identifier, or external identifier is not available, a short free text label for the format should be provided, and details elucidated in the resource description. 
+
 ## Service, Interchange format, Interface/API
 
 The elements of web service that are important for the ECRR are 
@@ -26,7 +32,7 @@ The elements of web service that are important for the ECRR are
 1. what are the representations of those resources used for input and output on the service
 1. what operations are available to act on the resources.  
 
-As an example, imagine a simple service that reports the current temperature from a thermometer. The resource offered is a temperature reading, let's say the representation is a JSON object the has two keys: 'ID'-- the themometer's identifier and 'temp'--the current temperature as a decimal number in degrees fahrenheit. The service runs on the HTTP protocol, accessing the service via the URL for that thermometer, and the only operation available is 'GET'-- i.e. tell me the current state of the offered resource.
+As an example, imagine a simple service that reports the current temperature from a thermometer. The resource offered is a temperature reading, let's say the representation is a JSON object the has two keys: 'ID'-- the themometer's identifier and 'temp'--the current temperature as a decimal number in degrees Fahrenheit. The service runs on the HTTP protocol, accessing the service via the URL for that thermometer, and the only operation available is 'GET'-- i.e. tell me the current state of the offered resource.
 
 A more complex service might provide temperatures from a collection of thermometers. Each thermometer could be considered a separate resource accessed by the service. Further functionality (and complexity) could be added by offering not only the current temperature, but the average temperature over the last 24 hours. The service now provides many offerings. Different service protocols have different mechanisms to request these various offerings. The most widely used current approach would be to implement different resource paths in the HTTP URI used to access the service (in software practice these are commonly called 'routes'). Something like http://mytemps.net/thermID to get the current temperature from thermometer thermID, and http://mytemps.net/thermID/avg to get the 24 hour average. 
 
@@ -48,7 +54,54 @@ This is obviously only the tip of the iceberg problem of matching data with appl
 
 Service resources in the ECRR represent service instances. A service instance must implement some interface, and that interface utilizes some input and output formats for communication.  In many cases, a particular service instance is a one-of implementation for some specific application, and there is no registered resource for either the interface or the input or output interchange format. In these cases, all information describing the service operation must be included in the Service registration.  In cases where there are specifications (with identifiers) for the interface or input or output interchange format, these can be linked either to a Specification in the ECRR, or if there is a resolvable URI that can be used as the link target. 
 
+The recommended approach is to 1) register each service instance, with the particular endpoint base URL for that instance; 2) Register the API(s) that the service instance implements. The API will link to a variety of potentialAction objects that specify the details of the resources (objects) that are operated on, the actions that can be invoked, a template string for invoking the action, any parameters required by the template, required input formats (typically for HTTP POST or PUT requests), and output formats offered by the service. Content negotiation using HTTP headers should be documented in the text description for the action. 3) If a specification document is available that documents the service, the service instances and the API should both be linked to the specification via the 'Conforms to' property.
+
+Some APIs are generic enough that service instances will implement Potential actions that are more specific than the API specifiction. For example and Open Geospatial Consortium Web Feature Service (OGC WFS) getFeature action can operate on a wide variety of object types (the feature type in OGC terms). Thus, Potential Actions that restrict the generic actions in the API specification need to be specified on the service instance. *[is a property on Potential action needed to indicate the generic action that it restricts?]*
+
 If the input and output formats for communication with a service are not specified in detail, with only a MIME type, the standard MIME type label (e.g. text/xml, text/csv) can be used. 
+
+### Potential Actions
+
+The potential action object is used to describe the offerings available from a service. The design is based on the schema.org PotentialAction object. The action is associated with one or more Interface/API or Service resources (see discussion above). Along with the standard Name and Description properties, the object includes a link to the Interface/API or Service resources that implement the action. Input and Output format fields specify the interchange profile for getting data in and out of the action endpoint. See the discussion of Format specification. It is not unusual for various input or output formats to be available; in these cases, the Target template should include parameters for specifying what formats will be used. Currently the Action model can not represent format requests based on HTTP headers for content negotiation. The Action Object identifies the resource that a Service or API acts on. Output from the Action will typically be a representation of the Action object serialized via the specified OutputFormat. 
+
+The *HTTP method* property is one of GET, PUT, POST, DELETE. Since the current PotentialAction model only provides for a URI template to specify requests, only GET and DELETE are currently supported. For services that do not operate via HTTP, this property should be NULL. The Operations property allows free text labels for service capabilities beyond the basic CRUD functionality of HTTP. 
+
+The *Target template* field should contain a template string following the IETF RFC6570 URI template specification. By convention, {BaseURL} should be used as the parameter representing the *Base URL* value specified in a service instance registry description.  Each parameter that will be substituted in the template should be enclosed in braces ('{...}'). 
+
+The *Template parameter* field provides definitions for populating parameters in the *Target template*.  In the long run, a separate 'PropertyValueSpecification' object is warranted, following the pattern used in the schema.org Actions implementation.  For the time being, a lot of information is packed into this field, using some invented syntax to distinguish various aspects:
+
+- parameter names from the template are prefixed with two hyphens and enclosed in braces. e.g. 
+```
+--{typeNames}
+```
+- parameter values are strings by default. If a different data type is  expected, it is specified by suffix on the parameter name, with a colon (':'). e.g.  
+```
+{maxlatitude}:double
+```
+- any explanation of the parameter value follows the parameter name (and data type if present), separated by a space and terminated by a period ('.'). e.g. 
+
+```
+--{dataTypeID}:integer Identifies data type, list delimiter is '|'.
+```
+- If there is a controlled vocabulary for the parameter, the values are specified by a pipe ('|') delimited list enclosed in parenthesis. e.g. 
+```
+--{format} output file format options. (json|xml)
+```
+- If the parameter is populated with code values instead of terms, the term (or explanation) associed with a value follows each value separated by a colon (':') e.g.  
+```
+--{dataseries}  string identifying NWIS data categories. (uv:current data |
+dv:daily values | gwlevels:groundwater levels | peak:peak stream flow at gage
+| inventory:site information | measurements:streamflow data for site)
+```
+- For some particularly complex templates, parameters are specified in groups. The group names are the parameters in the template, but instead of using the {? var1, var2, var3} notation, the template is like ?{group1}&{group2}&group3. Each group consists of a set of parameters enclosed in parenthesis ('(  )'), with each parameter in the group enclosed in braces ('{  }'), following conventions for the template parameters.  In some particulary complex. APIs, the parameter value specification is a term enclosed in angle brackets ('<  >'), in which case the user should refer to the service documentation to understand the constraints of parameter values.  e.g.
+
+```
+--{channel-options} ({net} (<network>), {sta} (<station>), {loc}
+(<location>), {cha} (<channel>))
+```
+in this example, *channel-options* is the group. The group name does not actually appear in a request. The parenthesis following the space after the group name enclose the parameters in teh group, each parameter specification separated by a comma. The range specification for the parameter, enclosed in parenthesis, is a term enclosed in brackets (e.g. <network>, <station>) indicating that the value for the parameter has constraints that are not specified here in the registry.  
+
+Obviously this parameter specification scheme will need to be a work in progress. Hopefully we can move these conventions forward in teh community for better machine-actionable description of service requests.
 
 ## Semantic Resources
 

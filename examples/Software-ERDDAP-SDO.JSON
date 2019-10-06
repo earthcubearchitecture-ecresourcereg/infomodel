@@ -60,10 +60,10 @@
 	"http://purl.org/dc/terms/conformsTo": "no specification",
 	"about": ["cross domain"],
 	"identifier": "https://coastwatch.pfeg.noaa.gov/erddap",
-	"http://purl.obolibrary.org/obo/ECRRO_0000129": "operational, wide use",
-	"ecrro:registryContributor": {
+	"eccro:0000138": "in production",
+	"ecrro:0000156": {
 		"@type":"Person",
-		"name": "Stephen M. Richard",
+		"name": "Stephen M. Richard registry contributor",
 		"identifier": "https://orcid.org/0000-0001-6041-5302"
 	},
 	"provider": {
@@ -71,10 +71,10 @@
 		"name": "NOAA NMFS SWFSC Environmental Research Division (ERD)",
 		"email":"unknown@unknown.net"
 	},
-	"ecrro:expectedLifetime": "long term",
+	"ecrro:0000219": "long term",
 	"url": "https://coastwatch.pfeg.noaa.gov/erddap/information.html",
-	"ecrro:usage": "operational, wide use",
-	"ecrro:stewardedBy": {
+	"ecrro:0000017": "wide usage",
+	"ecrro:0000218": {
 		"@type": "Organization",
 		"description": "NOAA NMFS SWFSC Environmental Research Division (ERD)"
 	},

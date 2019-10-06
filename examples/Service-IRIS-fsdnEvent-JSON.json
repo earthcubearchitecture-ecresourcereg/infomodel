@@ -13,7 +13,8 @@
 		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
 		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
 		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
-		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
+		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017",
+		"ECDataService": "http://purl.obolibrary.org/obo/ecrro.owl/ECCRO_0000202"
 		
 	},
 	"@id": "urn:identifier.for.IRIS/FSDN/service",
@@ -52,7 +53,7 @@
 	],
 	"identifier": "missing",
 	"ECresourcematurity": "in production",
-	"primaryPublication": "missing",
+	"sdo:publication": "missing",
 	"ecrro:registryContributor": {
 		"@type": "Person",
 		"name": "Stephen M Richard",
@@ -101,7 +102,7 @@
 						"defaultValue": "Any",
 						"description": "allowed: Any valid time. Limit to events on or after the specified start time; use UTC for time zone",
 						"valueRequired": true,
-						"valuePattern": "regex for datetime or 'Any'?",
+						"valuePattern": "(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?",
 						"xsd:type": "dateTime"
 					},
 					{
@@ -111,7 +112,7 @@
 						"defaultValue": "Any",
 						"description": "allowed: Any valid time. Limit to events on or before the specified start time",
 						"valueRequired": true,
-						"valuePattern": "regex for UTC or 'Any'?"
+						"valuePattern": "(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?"
 					},
 					{
 						"@id": "urn:iris:fsdn.minlatitude",
@@ -120,7 +121,8 @@
 						"defaultValue": "-90.0",
 						"description": "Limit to events with a latitude larger than or equal to the specified minimum. Value must be less that maxlat",
 						"valueRequired": true,
-						"valuePattern": "-90.0 to 90.0",
+						"minValue": -90.0,
+						"maxValue": 90.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -131,7 +133,8 @@
 						"defaultValue": "90.0",
 						"description": "Limit to events with a latitude smaller than or equal to the specified minimum. Value must be greater than minlat",
 						"valueRequired": true,
-						"valuePattern": "-90.0 to 90.0",
+						"minValue": -90.0, 
+						"maxValue": 90.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -140,9 +143,10 @@
 						"@type": "PropertyValueSpecification",
 						"valueName": "minlon",
 						"defaultValue": "-180.0",
-						"description": "Limit to events with a longitude larger than or equal to the specified minimum.",
+						"description": "Limit to events with a longitude larger than or equal to the specified minimum. Value must be less than maxlon; longitude east of 0 degrees is <0",
 						"valueRequired": true,
-						"valuePattern": "-180.0 to 180.0",
+						"minValue": -180.0,
+						"maxValue": 180.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -153,7 +157,8 @@
 						"defaultValue": "180.0",
 						"description": "Limit to events with a longitude smaller than or equal to the specified maximum.",
 						"valueRequired": true,
-						"valuePattern": "-180.0 to 180.0",
+						"minValue":-180.0,
+						"maxValue": 180.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -164,7 +169,8 @@
 						"defaultValue": "0.0",
 						"description": "Specify the latitude to be used for a radius search.",
 						"valueRequired": false,
-						"valuePattern": "-90.0 to 90.0",
+						"minValue":-90.0,
+						"maxValue": 90.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -175,7 +181,8 @@
 						"defaultValue": "0.0",
 						"description": "Specify the longitude to be used for a radius search.",
 						"valueRequired": false,
-						"valuePattern": "-180.0 to 180.0",
+						"minValue":-180.0,
+						"maxValue": 180.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -186,7 +193,8 @@
 						"defaultValue": "0.0",
 						"description": "Limit to events within the specified minimum number of degrees from the geographic point defined by the latitude and longitude parameters.",
 						"valueRequired": false,
-						"valuePattern": "0.0 to 180.0",
+						"minValue": 0.0,
+						"maxValue": 180.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -197,7 +205,8 @@
 						"defaultValue": "180.0",
 						"description": "Limit to events within the specified maximum number of degrees from the geographic point defined by the latitude and longitude parameters.",
 						"valueRequired": false,
-						"valuePattern": "0.0 to 180.0",
+						"minValue": 0.0,
+						"maxValue": 180.0,
 						"xsd:type": "float",
 						"unitOfMeasure": "degrees"
 					},
@@ -208,9 +217,8 @@
 						"defaultValue": "Any",
 						"description": "Limit to events with depth more than the specified minimum",
 						"valueRequired": true,
-						"minvalue":"",
-						"maxvalue":"",
-						"valuePattern": "Any valid depth",
+						"minvalue":"0.0",
+						"maxvalue":"500.0",
 						"xsd:type": "float",
 						"unitOfMeasure": "kilometers"
 					},
@@ -221,9 +229,8 @@
 						"defaultValue": "Any",
 						"description": "Limit to events with depth less than the specified minimum",
 						"valueRequired": true,
-						"minvalue":"",
-						"maxvalue":"",
-						"valuePattern": "Any valid depth",
+						"minvalue":"0.0",
+						"maxvalue":"500.0",
 						"xsd:type": "float",
 						"unitOfMeasure": "kilometers"
 					},
@@ -260,7 +267,6 @@
 						"defaultValue": "Any",
 						"description": "Specify a magnitude type to use for testing the minimum and maximum limits",
 						"valueRequired": false,
-						"valuePattern": "Any valid magnitude type",
 						"xsd:type": "string",
 						"valueOptions": [
 						
@@ -273,7 +279,6 @@
 						"defaultValue": "Any",
 						"description": "Limit to events with a specified eventType. The parameter value can be a single item, a comma-separated list of items.",
 						"valueRequired": false,
-						"valuePattern": "Allowed values are from QuakeML or unknown if eventType is not given",
 						"xsd:type": "string",
 						"valueOptions": [
 						
@@ -313,7 +318,7 @@
 						"defaultValue": "Any",
 						"description": "Select a specific event by ID; event identifiers are data center specific.",
 						"valueRequired": false,
-						"valuePattern": "Any valid ID",
+						"valuePattern": "",
 						"xsd:type": "string"
 					}
 			]
