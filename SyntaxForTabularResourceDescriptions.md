@@ -393,8 +393,15 @@ Identifies the particular version of a resource described by the Registry record
 sdo:version some Text
 ```
 		
+## Format
 
+There are a variety of properties that describe format in different context: 1) representation format for a semantic resource; 2) base format for an interchange format; 3) input format (Service, API, Software); 4) output format (Service, API, Software). 
 
+These can all implemented using sdo:encodingFormat in different contexts. The range of sdo:encodingFormat is Text or URL. In the test descriptions in many cases the formats are specified at the level of a standard MIME type, but for some resource we have identifiers for interchange formats registered in the EC registry. These registered formats are typically more proscriptive than the MIME type definition, but are based on a MIME type. For example ouput from an FDSN station data service is encoded in XML using a particular xml schmea. The Specific output format is identified by the XML schema namespace URI, but this output would also conform to the MIME type application/xml. In the format values in the registry this hiearachical relationship is indicated using the angle bracket '>' so the output format in the FDSN station example would be represented by 
+
+```
+application/xml > http://www.fdsn.org/xml/station/1 
+```
 
 
 ## Resource specific encoding
