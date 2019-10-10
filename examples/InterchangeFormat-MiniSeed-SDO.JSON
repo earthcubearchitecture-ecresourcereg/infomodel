@@ -6,7 +6,14 @@
 		"geolink": "http://schema.geolink.org/1.0/base/main#",
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
-		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_"
+		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
+		
+		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
+		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
+		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
+		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
+		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
+		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
 	},
 	"@id": "urn:cinergiinventory639",
 	"@type": [
@@ -35,18 +42,6 @@
 			"url": "https://seiscode.iris.washington.edu/projects/libmseed"
 		}
 	],
-	"dcat:qualifiedRelation": [
-		{
-			"@type": "dcat:Relationship",
-			"dct:relation": "(URI for resource required by described resource)",
-			"dcat:hadRole": "(URI for dependency type)"
-		},
-		{
-			"@type": "dcat:Relationship",
-			"dct:relation": "(URI primary publication)",
-			"dcat:hadRole": "ecrro:primaryPublication"
-		}
-	],
 	"dct:conformsTo": {
 		"@type": "eccro:Specification",
 		"name": "MiniSEED specification"
@@ -57,7 +52,7 @@
 		"identifier": "https://orcid.org/0000-0001-6041-5302"
 	},
 	"ecrro:timeToLive": "indefinite > 5 yr",
-	"ecrro:usage": "Widely used by geoscientists, > 5 yr.",
+	"usage": ["ecrro:0000052", "ecrro:0000057"],
 	"ecrro:status": "Used in multiple places",
 	"eccro:citation": "recommended citation for MiniSEED",
 	"about": "seismology",

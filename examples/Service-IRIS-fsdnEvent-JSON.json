@@ -7,17 +7,17 @@
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
 		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
+		"eccr":"http://ezid.org/ark/",
 		
 		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
 		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
 		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
 		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
 		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
-		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017",
-		"ECDataService": "http://purl.obolibrary.org/obo/ecrro.owl/ECCRO_0000202"
+		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
 		
 	},
-	"@id": "urn:identifier.for.IRIS/FSDN/service",
+	"@id": "eccr:900006",
 	"@type": [
 		"CreativeWork",
 		"Product",
@@ -76,8 +76,7 @@
 			"@type": "SearchAction",
 			"name": "Query",
 			"description": "query service to obtain records of seismic events",
-			"ecrro:httpMethod": "GET",
-			"result": [
+			"result":
 				{
 					"@type": "DataDownload",
 					"encodingFormat": [
@@ -87,8 +86,7 @@
 						"GeoCSV-SeismicEvent"
 					],
 				"description": "XML, csv, or csv fromat for seismic event following EarthCube geoWs conventions."
-				}
-			],
+				},
 			"target": {
 				"@type": "EntryPoint",
 				"urlTemplate": "http://service.iris.edu/fdsnws/event/1/query?{geographic-constraints}&{depth-constraints}&{temporal-constraints}&{magnitude-constraints}&{organization-constraints}&{misc-parameters}&{format-option}&{nodata=404}",

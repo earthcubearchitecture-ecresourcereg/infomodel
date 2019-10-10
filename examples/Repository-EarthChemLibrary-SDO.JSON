@@ -16,7 +16,7 @@
 		"CreativeWork",
 		"Product"
 	],
-	"additionalType":"ecrro:repository",
+	"additionalType":<ecrro:0000209>,
 	"name": "EarthChem Library",
 	"description": "The EarthChem Library is a data repository that archives, publishes and makes accessible data and other digital content from geoscience research (analytical data, data syntheses, models, technical reports, etc).",
 	"creator": [{

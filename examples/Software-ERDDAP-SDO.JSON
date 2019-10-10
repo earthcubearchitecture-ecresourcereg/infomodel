@@ -83,20 +83,7 @@
 		"audienceType": ["data intermediary", "data users"]
 	},
 	"applicationCategory": "http://edamontology.org/operation_2422",
-	"supportingData":[
-		{ 
-		"@type":"DataFeed",
-        "name":"input Data Type specification",
-        "description":"encodingFormat specifies the interchange formats for file type and content to input into the software",
-		"position":"input",
-		"encodingFormat": ""
-		},
-		{
-		"@type":"DataFeed",
-        "name":"Output Data Type specification",
-        "description":"encodingFormat specifies the interchange formats for file type and content that will be the outpu from the  software",
-		"position":"output",
-		"encodingFormat": [
+	"encodingFormat": [
 			"html table",
 			"ESRI .asc",
 			"Google Earth client",
@@ -106,10 +93,16 @@
 			"text/csv",
 			"text/tsv",
 			"application/json",
-			"xhtml"
-			]
-		}
-	],
+			"xhtml"],
+			
+	"supportingData":
+		{ 
+		"@type":"DataFeed",
+        "name":"input Data Type specification",
+        "description":"encodingFormat specifies the interchange formats for file type and content to input into the software",
+		"position":"input",
+		"encodingFormat": [<ecrr:705026>, <ecrr:705027>, <ecrr:705053>, "Automatic Weather Station (AWS) XML",  "ASCII table","EDDGrid",<ecrr:705064>]
+		},
 	"runtimePlatform": [
 		"Tomcat 8 https://tomcat.apache.org/download-80.cgi"
 	],
