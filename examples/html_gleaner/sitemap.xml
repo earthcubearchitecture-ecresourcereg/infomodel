@@ -9,4 +9,16 @@
     <url>
         <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Repository-EarthChemLibrary-SDO.html</loc>
     </url>
+    <url>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Service-IRIS-fsdnEvent-JSON.html</loc>
+    </url>
+    <url>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Software-ERDDAP-SDO.html</loc>
+    </url>
+    <url>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Specification-COARDS-SDO.html</loc>
+    </url>
+    <url>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Interface-ChordsWebAPIv2-SDO.html</loc>
+    </url>
 </urlset>
