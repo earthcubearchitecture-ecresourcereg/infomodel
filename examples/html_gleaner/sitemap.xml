@@ -3,4 +3,7 @@
     <url>
         <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/master/examples/html_gleaner/DcatExampleEPOS.html</loc>
     </url>
+    <url>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/master/examples/html_gleaner/InterchangeFormat-MiniSeed-SDO.html</loc>
+    </url>
 </urlset>
