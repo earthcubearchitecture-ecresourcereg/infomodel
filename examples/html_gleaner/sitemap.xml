@@ -1,12 +1,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/master/examples/html_gleaner/DcatExampleEPOS.html</loc>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/DcatExampleEPOS.html</loc>
     </url>
     <url>
-        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/master/examples/html_gleaner/InterchangeFormat-MiniSeed-SDO.html</loc>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/InterchangeFormat-MiniSeed-SDO.html</loc>
     </url>
     <url>
-        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/master/examples/html_gleaner/Repository-EarthChemLibrary-SDO.html</loc>
+        <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/Repository-EarthChemLibrary-SDO.html</loc>
     </url>
 </urlset>
