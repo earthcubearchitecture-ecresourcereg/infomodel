@@ -3,82 +3,58 @@
     <head>
         <title>Repository-EarthChemLibrary-SDO</title>
         <script type="application/ld+json">
-       {
-	"@context": {
-		"@vocab": "http://schema.org/",
-		"datacite": "http://purl.org/spar/datacite/",
-		"earthcollab": "https://library.ucar.edu/earthcollab/schema#",
-		"geolink": "http://schema.geolink.org/1.0/base/main#",
-		"vivo": "http://vivoweb.org/ontology/core#",
-		"dcat": "http://www.w3.org/ns/dcat#",
-		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
-		
-		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
-		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
-		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
-		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
-		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
-		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
-	},
-	"@id": "urn:cinergiinventory639",
+  metadata record",
 	"@type": [
 		"CreativeWork",
-		"Product",
-		"Text"
+		"Product"
 	],
-	"additionalType": [
-		"ecrro:InterchangeFormat"
-	],
-	"description": "MiniSEED is the subset of the SEED standard that is used for time series data. Very limited metadata for the time series is included in miniSEED beyond time series identification and simple state-of-health flags. In particular, geographic coordinates, response/scaling information and other information needed to interpret the data values are not included.  Time series are stored as generally independent, fixed length data records which each contain a small segment of contiguous series values. A reader of miniSEED is required to reconstruct longer, contiguous time series from the data record segments. Common record lengths are 512-byte (for real time streams) and 4096-byte (for archiving), other record lengths are used for special scenarios.  A 'file' or 'stream' of miniSEED is simply a concatenation of data records. Depending on the capabilities of the intended reader the data records for multiple channels of data may be multiplexed together.",
-	"name": "MiniSEED",
-	"creator": "not specified",
-	"datePublished": "not specified",
-	"keywords": [
-		"seismogram",
-		"time series",
-		"XML"
-	],
-	"funder": "National Science Foundation",
-	"license": "not specified",
-	"isRelatedTo": [
-		{
-			"@type": "Product",
-			"name": "libmseed software library to support reading and writing miniSEED data",
-			"url": "https://seiscode.iris.washington.edu/projects/libmseed"
-		}
-	],
-	"dct:conformsTo": {
-		"@type": "eccro:Specification",
-		"name": "MiniSEED specification"
+	"additionalType":<ecrro:0000209>,
+	"name": "EarthChem Library",
+	"description": "The EarthChem Library is a data repository that archives, publishes and makes accessible data and other digital content from geoscience research (analytical data, data syntheses, models, technical reports, etc).",
+	"creator": [{
+		"@Type": "Organization",
+		"name": "Geoinformatics for Geochemistry, Lamont-Doherty Earth Observatory, Columbia University, New York, USA"
 	},
-	"ecrro:RegistryContributor": {
-		"@type": "ContactPoint",
+	{
+	"@Type": "Person",
+		"name":"Kerstin A. Lehnert",
+		"identifier":"orcid: "
+	}],
+	"datePublished": "ongoing",
+	"keywords": ["geochemistry", "Earth Material", "whole rock", "trace element", "Rare Earth", "geochemical dataset"],
+	
+	"funder": {
+		"@type": "Organization",
+		"name": "National Science Foundation"
+	},
+	"license":  "https://www.earthchem.org/about/terms",
+
+
+	"about": "<ado:ADO__0000030>",
+	"identifier":  "http://doi.org/10.17616/R3V644", 
+	
+	"ECresourcematurity": "Used in multiple places",
+
+	"ecrro:registryContributor": {
+		"@type": "Person",
 		"name": "Stephen M. Richard",
 		"identifier": "https://orcid.org/0000-0001-6041-5302"
 	},
-	"ecrro:timeToLive": "indefinite > 5 yr",
-	"usage": ["ecrro:0000052", "ecrro:0000057"],
-	"ecrro:status": "Used in multiple places",
-	"eccro:citation": "recommended citation for MiniSEED",
-	"about": "seismology",
-	"identifier": "not specified",
 	"provider": {
-		"@type": "Organization",
-		"name": "International Federation of Digital Seismograph Networks (FDSN)"
+		"@Type": "Organization",
+		"name": "Geoinformatics for Geochemistry, Lamont-Doherty Earth Observatory, Columbia University, New York, USA"
 	},
-	"url": "http://www.iris.washington.edu/ds/nodes/dmc/data/formats/miniseed/",
-	"sourceOrganization": {
-		"@type": "Organization",
-		"name": "originating project name",
-		"description": "originatingProject description"
+	"ecrro:expectedlifetime": "long term",
+	"url": "https://www.earthchem.org/library",
+	"ecrro:usage": "wide usage",
+	"eccro:stewardedby": {
+		"@Type": "Organization",
+		"name": "Geoinformatics for Geochemistry, Lamont-Doherty Earth Observatory, Columbia University, New York, USA"
 	},
 	"audience": {
 		"@type": "Audience",
-		"description": "seismologists, seismic data facilities, technologists"
-	},
-	"encodingFormat": "application/XML",
-	"isBasedOn": "Information Model, not specified, is there a conceptual model underlying SEED",
-	"inLanguage": "en"
+		"audienceType": "scientists"
+	}
 }
         </script>
     </head>

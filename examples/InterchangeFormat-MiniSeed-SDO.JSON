@@ -15,7 +15,7 @@
 		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
 		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
 	},
-	"@id": "urn:cinergiinventory639",
+	"@id": "urn:cinergiinventory640",
 	"@type": [
 		"CreativeWork",
 		"Product",

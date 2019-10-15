@@ -11,7 +11,7 @@
 		
 		"ECresourcematurity":"ecrro:0000129"
 	},
-	"@id": "ID for this metadata record",
+	"@id": "IEDA ID metadata record",
 	"@type": [
 		"CreativeWork",
 		"Product"
