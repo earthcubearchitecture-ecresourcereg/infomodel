@@ -1,9 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
-    <url>
+<!-- <url>
         <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/DcatExampleEPOS.html</loc>
     </url>
-    <url>
+ -->
+ <url>
         <loc>https://raw.githubusercontent.com/earthcubearchitecture-ecresourcereg/infomodel/gleaner/examples/html_gleaner/InterchangeFormat-MiniSeed-SDO.html</loc>
     </url>
     <url>

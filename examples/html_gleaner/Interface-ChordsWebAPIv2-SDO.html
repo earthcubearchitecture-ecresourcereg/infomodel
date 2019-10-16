@@ -10,7 +10,7 @@
   },
   "@id": "http://portal.chordsrt.com/api/v1/data",
   "@type": "WebAPI",
-  "serviceType": "ecrro:chordsapiv1",  #should reference an API specification in the EC resource registry
+  "serviceType": "ecrro:chordsapiv1", 
   "name": "Download data from NCAR EarthCube CHORDS",
   "documentation": "http://portal.chordsrt.com/about/data_urls",
   "description":"NOTE--THIS DOCUMENT INCLUDES COMMENTS PREFIXED BY #, SO IT ISN'T VALID JSON.  URL based API to access data from real time instruments and sensors; A specification for the API could not be found, but examples at the documentation link above can be reverse engineers without too much trouble. This document describes a particular service instance",
@@ -21,14 +21,14 @@
 	  "description": "Download all instruments for past 24 hours.",
       "result": {
         "@type": "DataDownload",
-        "encodingFormat": ["application/json", "application/geo+json"]   #for better interoperability and targeting software applications, need a more granular specification of the encoding that defines the JSON key vocabulary and semantics, vocabularies used to populate property values, and conventions for syntax.
+        "encodingFormat": ["application/json", "application/geo+json"]  
 		
       },
       "target": {
         "@type": "EntryPoint",
         "urlTemplate": "http://portal.chordsrt.com/api/v1/data.{encoding}",
         "httpMethod": "GET",
-		"contentType": ["application/json", "application/geo+json"]  #supported mime type of response; implication is that this would be use in http header?
+		"contentType": ["application/json", "application/geo+json"] 
       },
       "query-input": [
         {
@@ -41,7 +41,7 @@
         }
       ],
       "object": {
-        "@type": "DataFeed",  #is this useful information that hasn't  already been provided here?
+        "@type": "DataFeed",  
 		"description":"what would be useful here is a listing of the instruments that support the feed, and the variables measured.",
 		"variableMeasured":{
 			"@type":"PropertyValue",
@@ -62,7 +62,7 @@
       },
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "http://portal.chordsrt.com/api/v1/data.{encoding}?instruments={instruments}&start={start}&end={end}",
+        "urlTemplate": "http://portal.chordsrt.com/api/v1/data.{encoding}?instruments={instruments}&amp;start={start}&amp;end={end}",
         "httpMethod": "GET"
       },
       "query-input": [
@@ -112,11 +112,11 @@
 	  "description": "data from a single instrument in an optional start and/or end date",
       "result": {
         "@type": "DataDownload",
-        "encodingFormat": ["GeoCSV2.0", "application/geo+json"]  #for better interoperability and targeting software applications, need a more granular specification of the encoding that defines the JSON key vocabulary and semantics, vocabularies used to populate property values, and conventions for syntax.
+        "encodingFormat": ["GeoCSV2.0", "application/geo+json"]  
       },
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "http://portal.chordsrt.com/api/v1/data/{instrumentID}.{encoding}?start={start}&end={end}&last",
+        "urlTemplate": "http://portal.chordsrt.com/api/v1/data/{instrumentID}.{encoding}?amp;start={start}&amp;end={end}&amp;last",
         "httpMethod": "GET"
       },
       "query-input": [
