@@ -66,7 +66,7 @@
         "httpMethod": "GET"
       },
       "query-input": [
-        {# do these kind of cross references work in JSON-LD????
+        {
           "@id": "http://portal.chordsrt.com/about/data_urls#encoding"
         },
         {
@@ -95,13 +95,12 @@
           "valuePattern": "(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?"
         }
       ],
-      "object": {  #its not clear to me what the purpose of having these '-input' elements here is; see object is last entry above, where suggest that should describe the variableMeasured that are reported by the DataFeed
-        "@type": "DataFeed",
+      "object": {  
+	        "@type": "DataFeed",
         "encodingFormat-input": { "@id": "http://portal.chordsrt.com/about/data_urls#encoding" },
         "identifier-input": { "@id": "http://portal.chordsrt.com/about/data_urls#instruments" },
-		#these are instrument identifiers, not identifiers for the DataFeed, seems like this would be confusing
-        "temporalCoverage-input": [ #not consistent with 'a textual string indicating a time period in ISO 8601 time interval format. '
-          { "@id": "http://portal.chordsrt.com/about/data_urls#start" },
+        "temporalCoverage-input": [
+	         { "@id": "http://portal.chordsrt.com/about/data_urls#start" },
           { "@id": "http://portal.chordsrt.com/about/data_urls#end" }
         ]
       }
@@ -135,16 +134,16 @@
         },
         {
           "@type": "PropertyValueSpecification",
-          "valueName": "last",  #not clear how to deal with this kind of parameter-- is a flag with no value, and invalidates other parameters (start, end) if present
-          "description": "optional property, if used, start and end are ignored. Simply include the parameter with no value to indicate that the most recent value(s) from the instrument should be reported",
+          "valueName": "last",
+	          "description": "optional property, if used, start and end are ignored. Simply include the parameter with no value to indicate that the most recent value(s) from the instrument should be reported",
           "valueRequired": false
         }
       ],
-      "object": {  #its not clear to me what the purpose of having these '-input' elements here is; see object is last entry above, where suggest that should describe the variableMeasured that are reported by the DataFeed
-        "@type": "DataFeed",
+      "object": { 
+	      "@type": "DataFeed",
         "encodingFormat-input": { "@id": "http://portal.chordsrt.com/about/data_urls#encoding" },
-        "temporalCoverage-input": [ #not consistent with 'a textual string indicating a time period in ISO 8601 time interval format. '
-          { "@id": "http://portal.chordsrt.com/about/data_urls#start" },
+        "temporalCoverage-input": [
+	          { "@id": "http://portal.chordsrt.com/about/data_urls#start" },
           { "@id": "http://portal.chordsrt.com/about/data_urls#end" }
         ]
       }
