@@ -7,6 +7,7 @@
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
 		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
+		"ecrr": "http://n2t.net/ark:/NNNNN/xxx",
 		
 		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
 		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
@@ -14,7 +15,8 @@
 		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
 		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
 		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017",
-		"ECDataService": "http://purl.obolibrary.org/obo/ecrro.owl/ECCRO_0000202"
+		"ECDataService": "http://purl.obolibrary.org/obo/ecrro.owl/ECCRO_0000202",
+		
 		
 		}		
 }

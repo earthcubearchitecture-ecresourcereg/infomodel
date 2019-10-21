@@ -7,22 +7,22 @@
 		"vivo": "http://vivoweb.org/ontology/core#",
 		"dcat": "http://www.w3.org/ns/dcat#",
 		"ecrro": "http://purl.obolibrary.org/obo/ECRRO_",
-		
-		"dependsOn":"http://purl.obolibrary.org/obo/RO_0002502",
+		"ecrr": "http://n2t.net/ark:/NNNNN/xxx",
+		"dependsOn": "http://purl.obolibrary.org/obo/RO_0002502",
 		"ECresourcematurity": "http://purl.obolibrary.org/obo/ECRRO_0000129",
-		"ECDataService":"http://purl.obolibrary.org/obo/ECRRO_0000202",
-		"citation":"http://purl.obolibrary.org/obo/ECRRO_0000009",
-		"primaryPublication":"http://purl.obolibrary.org/obo/ECRRO_0000065",
-		"usage":"http://purl.obolibrary.org/obo/ECRRO_0000017"
+		"ECDataService": "http://purl.obolibrary.org/obo/ECRRO_0000202",
+		"citation": "http://purl.obolibrary.org/obo/ECRRO_0000009",
+		"primaryPublication": "http://purl.obolibrary.org/obo/ECRRO_0000065",
+		"usage": "http://purl.obolibrary.org/obo/ECRRO_0000017"
 	},
-	"@id": "urn:cinergiinventory639",
+	"@id": "ecrr:705021",
 	"@type": [
 		"CreativeWork",
 		"Product",
 		"Text"
 	],
 	"additionalType": [
-		"ecrro:InterchangeFormat"
+		"ecrro:0000208"
 	],
 	"description": "MiniSEED is the subset of the SEED standard that is used for time series data. Very limited metadata for the time series is included in miniSEED beyond time series identification and simple state-of-health flags. In particular, geographic coordinates, response/scaling information and other information needed to interpret the data values are not included.  Time series are stored as generally independent, fixed length data records which each contain a small segment of contiguous series values. A reader of miniSEED is required to reconstruct longer, contiguous time series from the data record segments. Common record lengths are 512-byte (for real time streams) and 4096-byte (for archiving), other record lengths are used for special scenarios.  A 'file' or 'stream' of miniSEED is simply a concatenation of data records. Depending on the capabilities of the intended reader the data records for multiple channels of data may be multiplexed together.",
 	"name": "MiniSEED",
@@ -33,7 +33,11 @@
 		"time series",
 		"XML"
 	],
-	"funder": "National Science Foundation",
+	"funder": {
+		"@type": "Organization",
+		"name": "US National Science Foundation (US NSF)",
+		"identifier": "https://ror.org/021nxhr62"
+	},
 	"license": "not specified",
 	"isRelatedTo": [
 		{
@@ -46,16 +50,23 @@
 		"@type": "eccro:Specification",
 		"name": "MiniSEED specification"
 	},
-	"ecrro:RegistryContributor": {
-		"@type": "ContactPoint",
-		"name": "Stephen M. Richard",
-		"identifier": "https://orcid.org/0000-0001-6041-5302"
+	"ecrro:0001301": {
+		"@type": "ecrro:0001300",
+		"contributor": {
+			"@type": "Person",
+			"name": "Stephen M. Richard",
+			"identifier": "https://orcid.org/0000-0001-6041-3332"
+		},
+		"datePublished": "2019-10-21"
 	},
-	"ecrro:timeToLive": "indefinite > 5 yr",
-	"usage": ["ecrro:0000052", "ecrro:0000057"],
-	"ecrro:status": "Used in multiple places",
-	"eccro:citation": "recommended citation for MiniSEED",
-	"about": "seismology",
+	"ecrro:0000219": "ecrro:0000301",
+	"ecrro:0000017": [
+		"ecrro:0000052",
+		"ecrro:0000057"
+	],
+	"ecrro:0000017": "http://cor.esipfed.org/ont/earthcube/UBA_0000001",
+	"dc:BibliographicCitation": "recommended citation for MiniSEED",
+	"about": "http://cor.esipfed.org/ont/earthcube/ADO/ADO__0000099",
 	"identifier": "not specified",
 	"provider": {
 		"@type": "Organization",
@@ -69,7 +80,11 @@
 	},
 	"audience": {
 		"@type": "Audience",
-		"description": "seismologists, seismic data facilities, technologists"
+		"description": "seismologists, seismic data facilities, technologists",
+		"identifier": [
+			"http://cor.esipfed.org/ont/earthcube/AUT_0000007",
+			"http://cor.esipfed.org/ont/earthcube/AUT_0000003"
+		]
 	},
 	"encodingFormat": "application/XML",
 	"isBasedOn": "Information Model, not specified, is there a conceptual model underlying SEED",
